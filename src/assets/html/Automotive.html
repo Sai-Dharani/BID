@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotive eCommerce</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .carousel-inner img {
+          width: 100%;
+          height: 500px;
+        }
+        .section-title {
+          margin: 40px 0;
+          text-align: center;
+        }
+        .card-img-top {
+          height: 200px;
+          object-fit: contain;
+        }
+        .img-fluid {
+          max-width: 100%;
+          height: 70px;
+          object-fit: contain;
+        }
+        .text-center p {
+          margin-top: 5px;
+          font-size: 14px;
+          font-weight: bold;
+        }
+        .choose-us-section {
+          background-color: #90EE90;
+          height: 500px;
+          color: white;
+          text-align: left;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+    	.best-car-deal{
+          height: 328px;
+          color: white;
+          text-align: left;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+    	}
+        ul.list-unstyled li:before {
+          content: '\f105';
+          font: normal 14px / 1 'FontAwesome';
+          color: #ee5624;
+          margin-right: 12px;
+        }
+        .customer-img {
+          width: 150px; /* Adjust as needed */
+          height: 150px; /* Adjust as needed */
+          border-radius: 50%; /* Creates a circular shape */
+          margin-bottom: 15px;
+        }
+        /* Mega Menu Styles */
+        .mega-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          padding: 20px;
+          background-color: #f8f9fa; /* Adjust background color */
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Adjust box shadow */
+          display: none; /* Hide by default */
+        }
+        .mega-menu.active {
+          display: block;
+        }
+        .mega-menu .row {
+          margin-bottom: 20px;
+        }
+        .mega-menu .col {
+          padding: 0 10px;
+        }
+        /* Header Styles */
+        .header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 20px;
+          background-color: #ffffff;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header .navbar-brand {
+          margin-right: 20px;
+        }
+        .header .search-bar {
+          flex: 1;
+        }
+       .navbar-expand-lg .navbar-collapse {
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+            flex-direction: column-reverse;
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+    	.form-inline {
+        justify-content: flex-end;
+       }
+       .navbar.bg-light {
+        background-color: #021E37 !important;
+       }
+       .navbar-light .navbar-nav .active>.nav-link{
+         color: #FF6B00;
+    	 font-weight: bold;
+       }
+        .navbar-light .navbar-nav .nav-link{
+         color: #ffffff;
+       }
+    	.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+        color: #ffffff;
+      }
+      .mt-4, .my-4 {
+         margin-top: 0px !important;
+      }
+      .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+        color: #fff;
+        background-color: #021E37;
+        border-color: #dee2e6 #dee2e6 #fff;
+      }
+      .carousel-caption {
+    		background-color: rgba(0, 0, 0, 0.6);
+    		padding: 10px;
+    		border-radius: 5px;
+    		animation: fadeIn 2s;
+    	}
+       .best-car-deal .col-md-6 {
+    	margin: 0px;
+    	padding: 0px;
+       }
+       .container-fluid {
+      background-color: black;
+      color: white;
+    }
+    
+    .no-gutters {
+      margin-right: 0;
+      margin-left: 0;
+    }
+    
+    .no-gutters > .col, 
+    .no-gutters > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    
+    .car-deal {
+      position: relative;
+    }
+    
+    .car-deal img {
+      width: 100%;
+      height: auto;
+    }
+    
+    .overlay {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: 100%;
+    }
+    
+    .overlay button {
+      background-color: #0b5ed7;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .overlay button:hover {
+      background-color: white;
+      color: black;
+    }
+    
+    .header {
+      background-color: #fff; /* Or any color you want for the header background */
+    }
+    
+    .logo {
+      height: 42px; /* Adjust the height as needed */
+    }
+    
+    .form-inline .form-control {
+      height: calc(2.25rem + 2px); /* Adjust to match the height of the default Bootstrap input */
+    }
+    
+    .d-flex {
+      display: flex;
+    }
+    
+    .align-items-center {
+      align-items: center;
+    }
+    
+    .justify-content-between {
+      justify-content: space-between;
+    }
+    
+    .p-2 {
+      padding: 0.5rem; /* Adjust padding as needed */
+    }
+    
+    .mr-2 {
+      margin-right: 0.5rem; /* Adjust margin as needed */
+    }
+    .carousel-inner-usedCars {
+                display: flex;
+                flex-wrap: wrap;
+            
+            .carousel-item {
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .carousel-item.active {
+                display: flex;
+            }
+            .card {
+                flex: 1;
+                margin: 0 15px;
+            }
+    		.carousel-inner img {
+             width: 100%;
+             height: 200px;
+           }
+    	   .card-body{
+    	    background-color: #000;
+            opacity: .9;
+    		color:#fff;
+    	   }
+    	}
+    </style>
+</head>
+
+<body>
+
+    <!-- Header with Logo and Search -->
+    <div class="header d-flex align-items-center justify-content-between p-2">
+        <a class="navbar-brand" href="#">
+            <img src="https://w7.pngwing.com/pngs/19/224/png-transparent-car-gps-navigation-systems-computer-icons-automotive-navigation-system-automobile-luminous-efficiency-driving-company-car-thumbnail.png" alt="AutoShop Logo" class="logo img-fluid">
+        </a>
+        <form class="form-inline search-bar d-flex">
+            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- Navbar with Logo and Submenus -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownShop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Vehicles
+        </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownShop">
+                        <a class="dropdown-item" href="#">New Cars</a>
+                        <a class="dropdown-item" href="#">Used Cars</a>
+                        <a class="dropdown-item" href="#">Electric Vehicles (EVs)</a>
+                        <a class="dropdown-item" href="#">Hybrid Cars</a>
+                        <a class="dropdown-item" href="#">SUVs</a>
+                        <a class="dropdown-item" href="#">Trucks</a>
+                        <a class="dropdown-item" href="#">Motorcycles</a>
+                        <a class="dropdown-item" href="#">Commercial Vehicles</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">All Products</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownShop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Parts & Accessories
+        </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownShop">
+                        <a class="dropdown-item" href="#">Engine Parts</a>
+                        <a class="dropdown-item" href="#">Transmission Parts</a>
+                        <a class="dropdown-item" href="#">Brakes & Suspension</a>
+                        <a class="dropdown-item" href="#">Exhaust Systems</a>
+                        <a class="dropdown-item" href="#">Lighting & Electrical</a>
+                        <a class="dropdown-item" href="#">Interior Accessories</a>
+                        <a class="dropdown-item" href="#">Exterior Accessories</a>
+                        <a class="dropdown-item" href="#">Tires & Wheels</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownShop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Maintenance & Services
+        </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownShop">
+                        <a class="dropdown-item" href="#">Oil Changes</a>
+                        <a class="dropdown-item" href="#">Tire Services</a>
+                        <a class="dropdown-item" href="#">Brake Services</a>
+                        <a class="dropdown-item" href="#">Battery Services</a>
+                        <a class="dropdown-item" href="#">Car Wash & Detailing</a>
+                        <a class="dropdown-item" href="#">Roadside Assistance</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownShop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Lifestyle & Apparel
+        </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownShop">
+                        <a class="dropdown-item" href="#">Car Care Products</a>
+                        <a class="dropdown-item" href="#">Car Covers</a>
+                        <a class="dropdown-item" href="#">Seat Covers & Mats</a>
+                        <a class="dropdown-item" href="#">Battery Services</a>
+                        <a class="dropdown-item" href="#">Automotive Apparel</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownShop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Customer Support
+        </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownShop">
+                        <a class="dropdown-item" href="#">Contact Us</a>
+                        <a class="dropdown-item" href="#">FAQ</a>
+                        <a class="dropdown-item" href="#">Live Chat</a>
+                        <a class="dropdown-item" href="#">Return Policy</a>
+                        <a class="dropdown-item" href="#">Warranty Information</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mega Menu -->
+    <div class="mega-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h5>Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Category 1</a></li>
+                        <li><a href="#">Category 2</a></li>
+                        <li><a href="#">Category 3</a></li>
+                        <li><a href="#">Category 4</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>Brands</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Brand 1</a></li>
+                        <li><a href="#">Brand 2</a></li>
+                        <li><a href="#">Brand 3</a></li>
+                        <li><a href="#">Brand 4</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>Special Offers</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Offer 1</a></li>
+                        <li><a href="#">Offer 2</a></li>
+                        <li><a href="#">Offer 3</a></li>
+                        <li><a href="#">Offer 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Carousel Automotive Big Banner -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://static.vecteezy.com/system/resources/previews/005/093/029/non_2x/realistic-car-parts-truck-tire-aluminum-wheel-disc-engine-piston-in-vintage-style-baner-of-the-auto-cargo-industry-repair-service-template-sales-of-spare-parts-vector.jpg"
+                class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.bajajmall.in/content/dam/emistoremarketplace/index/26-03-24/2/mahindra-cras/MahindraBP_Bigbanner_3_Desk_mahindrascorpionz8lnapoliblack_PDP_FW.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://t4.ftcdn.net/jpg/02/89/80/45/360_F_289804593_teboDpNudJbCoHqbNWPqLRSmBoHKUThE.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src=" https://d1krbhyfejrtpz.cloudfront.net/blog/wp-content/uploads/2022/02/07133952/AI-in-Automotive-Industry-1024x497.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/car-rental-service-banner-design-template-06af1fc3a7384d391dffc3e6e64e824e_screen.jpg?ts=1616601969" class="d-block w-100" alt="...">
+            </div>
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+	
+	
+
+    <!-- Featured Categories -->
+    <div class="container mt-5">
+	 <h2 class="section-title mt-5">Welcome to AutoShop, Your one-stop shop for all automotive needs</h2>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://i.insider.com/61c1e4174bbb26001947423b?width=700" class="card-img-top" alt="Vehicles">
+                    <div class="card-body">
+                        <h5 class="card-title">Vehicles</h5>
+                        <p class="card-text">Explore our range of new and used cars, SUVs, trucks, and more.</p>
+                        <a href="#" class="btn btn-primary">View More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://carorbis.com/wp-content/uploads/2021/08/Car-Accessories.webp" class="card-img-top" alt="Parts & Accessories">
+                    <div class="card-body">
+                        <h5 class="card-title">Parts & Accessories</h5>
+                        <p class="card-text">Find the best parts and accessories for your vehicle.</p>
+                        <a href="#" class="btn btn-primary">View More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://www.techadvisor.com/wp-content/uploads/2024/03/best-tech-car-accessories-2022.jpg?quality=50&strip=all" class="card-img-top" alt="Car Electronics">
+                    <div class="card-body">
+                        <h5 class="card-title">Car Electronics</h5>
+                        <p class="card-text">Upgrade your car with the latest electronics and gadgets.</p>
+                        <a href="#" class="btn btn-primary">View More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trending Searches -->
+    <section class="trending-searches">
+        <div class="container">
+            <h2 class="section-title mt-5">Popular Products</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card h-100">
+                        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141867/nexon-exterior-right-front-three-quarter-71.jpeg?isig=0&q=80" class="card-img-top" alt="Tata Nexon">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Tata Nexon</h5>
+                            <p class="card-text">The Tata Nexon is a compact SUV known for its stylish design, robust build quality, and competitive pricing. It features modern interiors, a range of safety features, and efficient engine options suitable for urban and semi-urban
+                                environments.</p>
+                            <a href="#" class="btn btn-primary mt-auto">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100">
+                        <img src="https://imgd-ct.aeplcdn.com/664x415/n/oxcsgdb_1735923.jpg?q=80" class="card-img-top" alt="Mahindra XUV300">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Mahindra XUV300</h5>
+                            <p class="card-text">The Mahindra XUV300 is a subcompact SUV that stands out for its strong performance, spacious interiors, and advanced features. It offers both petrol and diesel engine options, along with segment-leading safety features and
+                                a comfortable driving experience.</p>
+                            <a href="#" class="btn btn-primary mt-auto">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100">
+                        <img src="https://www.financialexpress.com/wp-content/uploads/2023/12/MG-Comet-EV.jpg?w=1024" class="card-img-top" alt="MG Comet EV">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">MG Comet EV</h5>
+                            <p class="card-text">MG Motors has produced electric vehicles (EVs) like the MG ZS EV and MG Marvel R Electric, but the "MG Comet EV" might be a new or upcoming model. For the latest details, it's best to check MG Motors' official website or recent
+                                automotive news sources for information on this specific model.</p>
+                            <a href="#" class="btn btn-primary mt-auto">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100">
+                        <img src="https://imgd.aeplcdn.com/1280x720/n/cw/ec/159231/swift-right-front-three-quarter.jpeg?isig=0&q=80" class="card-img-top" alt="Maruti Suzuki Swift">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Maruti Suzuki Swift</h5>
+                            <p class="card-text">The Maruti Suzuki Swift is a popular hatchback known for its sporty design, nimble handling, and fuel efficiency. It appeals to a wide range of buyers with its peppy performance, practicality, and affordable maintenance costs.</p>
+                            <a href="#" class="btn btn-primary mt-auto">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </br>
+    </br>
+
+    <!-- Featured Used Cars -->
+    <div class="container bg-light">
+	  <h2 class="section-title">Featured Used Cars</h2>
+        <div id="carouselIndicators" class="carousel slide row" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#carouselIndicators" data-bs-slide-to="1"></li>
+                <li data-bs-target="#carouselIndicators" data-bs-slide-to="2"></li>
+            </ol>
+            <div class="row carousel-inner-usedCars">
+                <div class="carousel-item active">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="https://static.toiimg.com/thumb/resizemode-4,msid-76212146,width-500,imgsize-400/76212146.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">2023 Hyundai Creta</h5>
+                                <p class="card-text">PRICE: 9,12,000</p>
+                                <p class="moto-text_system_10"><span class="moto-color3_3">Mileage: 45,250<br>Trim: 2.4L<br>Doors - 4<br>Transmission: 6-speed automatic w/OD<br>Engine: Regular Unleaded I-4 2.4 L/144<br>Exterior Color - Black</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="https://imgd-ct.aeplcdn.com/664x415/n/9herrua_1559465.jpg?q=80" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">2021 Maruti Baleno</h5>
+                                <p class="card-text">PRICE: 5,32,000</p>
+                                <p class="moto-text_system_10"><span class="moto-color3_3">Mileage: 53,250<br>Trim: 2.4L<br>Doors - 4<br>Transmission: 6-speed automatic w/OD<br>Engine: Regular Unleaded I-4 2.4 L/144<br>Exterior Color - Blue</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="https://images.livemint.com/img/2021/07/10/600x338/red-rage-tunnel_1606324642927_1625900687667.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">2020 Mahindra Thar</h5>
+                                <p class="card-text">PRICE: 5,32,000</p>
+                                <p class="moto-text_system_10"><span class="moto-color3_3">Mileage: 13,250<br>Trim: 2.4L<br>Doors - 4<br>Transmission: 6-speed automatic w/OD<br>Engine: Regular Unleaded I-4 2.4 L/144<br>Exterior Color - Red</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">2023 Hyundai i10</h5>
+                                <p class="card-text">PRICE: 4,12,000</p>
+                                <p class="moto-text_system_10"><span class="moto-color3_3">Mileage: 45,250<br>Trim: 2.4L<br>Doors - 4<br>Transmission: 6-speed automatic w/OD<br>Engine: Regular Unleaded I-4 2.4 L/144<br>Exterior Color - Black</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTImW3NxYNyhitKei52dzruzt134sebRgKpXQ&s" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">2019 Audi</h5>
+                                <p class="card-text">PRICE: 15,32,000</p>
+                                <p class="moto-text_system_10"><span class="moto-color3_3">Mileage: 53,250<br>Trim: 2.4L<br>Doors - 4<br>Transmission: 6-speed automatic w/OD<br>Engine: Regular Unleaded I-4 2.4 L/144<br>Exterior Color - Blue</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="data:image/jpeg;base64,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urDyII3kc5OMMaztTa3X8ST+ZmO/HrT0/If7zCGlZiSFxnwGcD2ZJMytLwhmIzsMjJAyceqOUnGFf7Zt8WxO4/JT2HYVfOuIV5d8Gqpx9ROod1P228j0AHQkgWuwPCOC6bktALXjBD3+kVP6gACr7QM+udQ0+vqfdbFPvEjcpiGQBKygMrISREQEREBERAREQEREBERAREQEREBERASO4/wWnWUPp9QgdH9xBHRlPVWHgZIxA+Zu1Hyda3S3N83qvvq3IsWshup2YKTk+sbHyHSapq9Jep+kovB/WrsB/iE+xJ5esNsQCPWMydo0+MjpbD/hv71M9pw237h+Bn13fwHTP9bT1+0KAfiJgW9jtIelePYT/OQl8sLwew/ZMuLwSz7pn0vd2Io8M/AGYrdjK/AfhA+dhwJ/umXF4C3lPoT/AINTylR2OTygcATgDfdmRX2dbynel7Ip92Xk7LIPsiBwunsyx+yZn6fsq33Z22vs4g+yJkV8DQeEDj2m7JH7smNJ2SPlOpJwtR4S+uhA8IGgaTsvjwk1ouB8s2pdMPKexUIEfpNOV8TJBCZ6CT0BARKxAREQEREBERAREQEREBERAREQEREBERAREQEREBERApiMSsQKYjErECmIxKxAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQERED/2Q=="
+                            class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">2020 Maruti Fronx</h5>
+                                <p class="card-text">PRICE: 5,32,000</p>
+                                <p class="moto-text_system_10"><span class="moto-color3_3">Mileage: 13,250<br>Trim: 2.4L<br>Doors - 4<br>Transmission: 6-speed automatic w/OD<br>Engine: Regular Unleaded I-4 2.4 L/144<br>Exterior Color - Red</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="https://images.hindustantimes.com/auto/img/2024/02/05/1600x900/Curvv-Front-3-4th-Angle-scaled_1707118161796_1707124287643.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">2024 Tata Curvv</h5>
+                                <p class="card-text">PRICE: 13,12,000</p>
+                                <p class="moto-text_system_10"><span class="moto-color3_3">Mileage: 45,250<br>Trim: 2.4L<br>Doors - 4<br>Transmission: 6-speed automatic w/OD<br>Engine: Regular Unleaded I-4 2.4 L/144<br>Exterior Color - Black</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB3C6msImGZbMPmO6TYzYFfMRsJMZkluhBrA&s" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">2021 Ford Ecosport</h5>
+                                <p class="card-text">PRICE: 8,32,000</p>
+                                <p class="moto-text_system_10"><span class="moto-color3_3">Mileage: 53,250<br>Trim: 2.4L<br>Doors - 4<br>Transmission: 6-speed automatic w/OD<br>Engine: Regular Unleaded I-4 2.4 L/144<br>Exterior Color - Blue</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="https://media.zigcdn.com/media/model/2020/Oct/magnite3_360x240.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">2020 Nissan Magnite</h5>
+                                <p class="card-text">PRICE: 5,32,000</p>
+                                <p class="moto-text_system_10"><span class="moto-color3_3">Mileage: 13,250<br>Trim: 2.4L<br>Doors - 4<br>Transmission: 6-speed automatic w/OD<br>Engine: Regular Unleaded I-4 2.4 L/144<br>Exterior Color - Red</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+
+
+    <!-- Research Car Models -->
+    <section class="research-car-models">
+        <div class="container">
+            <h2 class="section-title">Research Car Models</h2>
+            <ul class="nav nav-tabs" id="researchTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="body-styles-tab" data-toggle="tab" href="#body-styles" role="tab" aria-controls="body-styles" aria-selected="true">Car Body Styles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="makers-tab" data-toggle="tab" href="#makers" role="tab" aria-controls="makers" aria-selected="false">Browse by Makers</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="researchTabContent">
+                <!-- Car Body Styles Tab -->
+                <div class="tab-pane fade show active" id="body-styles" role="tabpanel" aria-labelledby="body-styles-tab">
+                    <div class="row">
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMRDxIQEhASERAPEBAQEBAWFRAQERUTFhEWFxcVFhYYHSggGBolHRUVITEhJTUrLi4uFx8zODMtOigtLisBCgoKDg0OFQ8QGyseICA3LystKy03LS0tKy0rKy0tLSstNSstLS0tNzctKys4NS0tLTAtLTctLSs3KysrNy0uLf/AABEIAKgBLAMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABwECAwUGBAj/xABKEAACAgEBAwcHBwgHCQEAAAAAAQIDBBEFEiEGBxMxQVFhFCIyUnGRkxcjVIGhwdEzQlNigpLC0kNyg7Gy4fAIJCVEdKKjw+IV/8QAGAEBAQEBAQAAAAAAAAAAAAAAAAECAwT/xAAhEQEBAAIBBAIDAAAAAAAAAAAAAQIRAwQTIWESFDFR8P/aAAwDAQACEQMRAD8AnEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB583Nrpg7LbIVQitZTnKMIr2tnB7R51KpTdOzsa3aNyem9BOvHj4ysa6vHq8SyWpbIkQ8O0ts4+Mt7IyKaF32WQr928+JHFmLtfN45WesKp/8viJb+njc+KfsbRmwOQuDVLfdHT2vTW2+Ur5t9/nPT3I648GVccuowntusrnT2ZB7sMiV8vVpqtufvS0PHLnSg/yWy9qW+Kx1FfbI2VFEYLSEIwS7IxjFe5GU6zpvbleq/Uczj88cLLXRXszMnct5OpOrfTj6ScdddUe/5SbV6WxNpL2QhL7yMOSs93lHNetk5sfstf3EymMOGZSt8nPcbPDVQ506l+U2btSrxeNvL3qR6aedTZjek7rKH3W031/a46Ht1LZwT4NJruaTX2m703tidV6bDA5Y7PvelWfizk+qPS1qX7repuoWJrVNNd64o4HN5N4d35TEon49HBP3pJnN7e5I04eLkZOHZk4llFNlsVVfcq24xctHFt8OHUYy6fKOmPUY26THqVIW5K7f23LDry67qc6ufSa0XRjXctyyUNI2R0Utd3Xj3m82dzw0qfQ5+JfhXR4S82VsFx6+pT08dGvE43Gx2mUv4SaDXbH27jZcd/GyKr4rr3Jxk14Sj1xfgzYmWgAAAAAAAAAAAAAAAAAAAAABbOaS1bSS623ojQ7S5a7Px/yudjxa/NU1ZL92GrA6AoRzn88+zofk1kXv9Wp1p/Xa4nN53PlN6qnAUVo9JTu1lr2ebGGn2l0lTDnZ9dEHZbZGuEU25SaikvrIx5Qc7O/Z5Ps2h32ybirp+ZUmu1J6arxbS8WRPtrlNkZ1ynlXOUU9Y1rVVR7tIe7i9X4mDyiHrL7TUkjPmpOweSc82xXbUzvK5+ksSuz5qHt3Xx/ZS9rO3wsOumCrqrhVWuqEEox9yIG2Lt1YmRDIhFWSr3vM1cFJSg4tN6Phx1+pHUvnct+hV/Fm/wCA9PHyYSPNycWdvjylcESvnbv+iU/Esf3GOXOzk9mNQvrtf3m+/g5/XzS8CHZc6+X2U4y/Zuf8ZhlzqZ3ZDFX9na//AGDv4n182PY8t3lKv+vyV71avvJsPm+vbFsczy1bvT9M7/Rbr322/R16uL4anRvnM2i+2heyn/6OXHyzHe3bk4cstaTaCEHzj7Sf59f1UR+8tfOBtN/0qXspr/A6d/Fy+vknE1vKWvewcqPrYuQvfVIhyXLrab/p5L+zpX8Jiu5X7SnFxlkzcZJxktylaprRr0SXnx0s6fKVJHNJZrsqterdkL32OX8Rn5zNm13bOuslFdJjx6Wuei3lpJapPua1WnsIj2btnNxq+iovsqr1ct2PR6avrfFa9hkzNvZ90JVW5Vs65rScJSjuta66NL2GO7Pj8dOnZy+fy20tF0q5qdc5VzXVOEpQmvZKOjR3nJ7nbz8bSNrjmVrss8y36rYr/EpHD+Sy8Peinkz74/vI8+npT7snnl2fYkrldjSfXvQdsP3q9eHi0jutkbXoy6+lx7oXV66b0JKST7n3PwZ8keT/AK0PeSPzH7XlRnyxXKPRZcW9Fo/nYLWL8OG8vd3EvhvDG5XU/tJ+BRFSMgAAAAAAAAAAGg5U8sMTZ0U8m3Sc9ejqinO2endFdS/Wei8T27e27j4VLvybVVWuCb1cpS7IxiuMpeCIZ50OWuBn425jOUr9+p70qZ1vdjJt+fJfYZyys1qbWPdtTnxk9VjYaj3Tulvv2uEGv8Rym0udDaN3DyqVK7qYV1L3vekvecSWwUp+iuHbJ9R0ZbDO2jO/Xprsi/V6/OWys4/tNnkUq1+bJfWl9w8l77Un3cCksaaWsZKa9w2K9ND1X+9/kOnh6n2s8/X4NdaG4wM6yI+p9rHlMf0a+38TD0bHRgZvKV6kft/EeVfqQ9xh6MdGDwzeVv1Y+5FY5cm9Eo8fBGDoyvRlHt+e9Vf9hhuvsi9G9H3ea/7jGterel72WdGQX+WT9YeVz9ZlnRlejQFXkz9Z+9lYWyb039PFt6FvRodGgPU8eXbbHT2s8tk2noparvG4g4pAWb77xq/ErXXKforSPeZXhJddi1/13sisGrGpmniTS1i95Fldmvg0UWcf9am35JZkqdoYtkXo45NPFvRcbIri+7jo/aa4Pwej7GutPvFm1xzuNlj7JiXGo5JbT8qwMbJ7bqK5S8J7ukl+8mbcygAAAAAAAAAAIW/2iKvOwZ+GTD39G/uIdJu/2iIf7vhS7si2Pvq1/hIRNRKoob0lDv4yfgSPyE5HQuhHIyF8y240U67rtktddX6vB8F16PsXGPcLrm+1JL+8mTlHgUTrxcSVedrRVCdFuNXKyMHoo6y0/O83Xv48HxZKsWZPKF04lc8XEqpl5b5Fdjzit6uTbUddxri/N48V53b1no2hsrE2hdlUqh1TxZRr8sgoRi7Gk3B6ek1qtU+/rRynKHbluNbBbtlljrh0s8jHdCslVZrRaq97jZDinLqfBNHqqqjfjUdI9oxx4RhbKqnEtcrch+dO6V3FT1k2011cOpkVwvKPZE8e2dc0lbS/O010lHTVSXemuJrIvVa95JfOnGM54l6jKLvx5bykt2eicWt5dj89pkY474NdzLGayAAqAAAAAAAAAAAAAAIV78lHs9KXsB6Nnw1clrprKMdfav8AMVYkTkPyNhZXHKyI70JJ+T4yai7N1N6vXTVPTgurTi+BvLeULhThPGxaq45GW8O+mcPOqmpqLj5jS1SUn7i7lZhUWWU0dHnwsxa4yx7saqVlcNeC6uG8txeOnacpyg5QXY92kYydsq4TssvodDd8FKMMmFe9wnuNRb6m49XAy06nM2Ni7SllRhS6J41rpjlxUFXZYvSjovS0lweq7Vo+wiTb2zZ0WzjOO7bTJxsS4p+K71po0+5kiRrhOvHnP/8ASWNjRqnTj04lqbsilKVk7XqrJSlq9Vw48O08XOxTF5NViTXT4sXJPg+EpJa+OjS/ZCI7LoQcmoxWspNRjHvk3ol9baPPC5aJdui+skPmn5I35G0aL7ca2GNjPp3ZOE64SnDjXGO8lvPe0fD1TW0T3yZ2WsTCx8Vf0FNcG++Sj5z+t6v6zZlEVMqAAAAAAAAAADnuWfJGjalMab3ZFVz6SudclGUZbrjrxTT4N9ZE22+ZDKhrLFyq712QsTos9mq3ot+4noAfNlnNpmY2Bfm3rclXNJ4/mzkqlqpWuUXokno9O7VvuOr2ZbPamDRXVmTxrKHGvLjD05Q3dE1pxWu6mn1a72uuhMttalFxklKMk4yi1qmmtGmu1EN8pObzLwr3l7McpV6t9FF/O1p9cUnwth4dfVwfWBp82vHVcbZ47eNHKhs7Grt31Nw328nIlro+kk09G+K3fqNxi7Dtlc668i/FvwpV0ztSk6cnGSXRz0fmdKoea/6vFcUai7l1kJKGVs6uycHrpZCypqS7dycXo/ZoXzy9rbW+Zpx5VUy4SaU6qmv17p9a8I+5hVm1ZLa+2Kcap71EGq3OL1XRqW9dYmuz81P+r3nh5R8z+dRkSjiQ8qx5edXPerhZFerYpNcV3rr8OomDkFyKr2bU/OVuTavnbtNOHZCCfVH+98e5LrAj5g+S7a30N/Fo/mK/Jbtb6I/i0/zH08C7HzEuaza30T/y0/zFfkq2t9FXxaf5j6cA2PmRc1G1vosfjU/iV+Sba30aHxqfxPpoDY+ZlzSbX+jV/Hq/Er8ke1vo9fx6j6YA2Pmj5IdrfoKvj1lfkh2t+hq+PA+lgTY+avkg2t+hp+PAr8j+1v0VPx4/gfSgGx82fI9tX9HR8eP4DanNpmYOFPLvcH87GE6q25uFbTXSuf8AW3Vp2a66n0mYsrHjZCVc4qcLIuE4NaxlFrRpruAiGic9q4lEq8yzHVesM6qv05aLsceKb3dV2aS6m1oaO+nGnHHnbRpj5WStn41dm+rK8eLlGV3HzlbK2Sk5Pjw8WbPbvILN2dfLJ2bKdtPF7kfOthHr3Jwf5aPXo1x8NeJrbeXl/mxyNnVTsg9YucbIOMu9RlFtPguoDc7N2TdK7fWTfjXYlsacx+d0GTXCK3bo6+YpSgo72i4Nvwb1VP8Axfb1SrW9j0uGsuuPQ0yc3J+EpPRd6kijltba76KFEqseTW892dNOn69kuM14R19hKnIbkdVs2hxi+kvs0d9+mm80uEYrV7sFx0Xi2BtsHYWLQ3KrFoqk25Nwrrg9W9XxSNhoVAAAAAAAAAAAAAAAAAAAAWuCfWk/tLgAAAAAAAAAAAAAAAAAAAAAAAWuCfWky4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/9k="
+                            alt="Sedan" class="img-fluid">
+                            <p>Sedan</p>
+                        </div>
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://www.shareicon.net/data/512x512/2015/08/30/93125_car_512x512.png" alt="SUV" class="img-fluid">
+                            <p>SUV</p>
+                        </div>
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://static.vecteezy.com/system/resources/previews/011/004/765/original/silhouette-of-cute-cartoon-toy-car-in-black-illustration-miniature-imitation-logo-of-car-editable-vehicle-free-vector.jpg" alt="Hatchback" class="img-fluid">
+                            <p>Hatchback</p>
+                        </div>
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://i.pinimg.com/736x/10/de/1a/10de1a50f262ef1fa92c7387a7a28ab8.jpg" alt="Convertible" class="img-fluid">
+                            <p>Convertible</p>
+                        </div>
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://img.freepik.com/premium-vector/coupe-sports-car-side-view-black-vector-silhouette-isolated-white-background_261737-688.jpg" alt="Coupe" class="img-fluid">
+                            <p>Coupe</p>
+                        </div>
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://www.shutterstock.com/shutterstock/videos/1026918629/thumb/1.jpg?ip=x480" alt="Minivan" class="img-fluid">
+                            <p>Minivan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Browse by Makers Tab -->
+                <div class="tab-pane fade" id="makers" role="tabpanel" aria-labelledby="makers-tab">
+                    <div class="row">
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn4KXHcNnjCeV_LLNHYmr1AEXY_tMAC70T9g&s" alt="Toyota" class="img-fluid">
+                            <p>Toyota</p>
+                        </div>
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDkDKt7-JKgbPyp_3LFB3Ropa98TjTUlrZVw&s" alt="Honda" class="img-fluid">
+                            <p>Honda</p>
+                        </div>
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://media.designrush.com/inspiration_images/291693/conversions/ford_logo_0_c4103a3013ad-mobile.jpg" alt="Ford" class="img-fluid">
+                            <p>Ford</p>
+                        </div>
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjB3LtbLBk23p5Sv9dpFQoZBvxXfFnDd3VRw&s" alt="Chevrolet" class="img-fluid">
+                            <p>Chevrolet</p>
+                        </div>
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://i.pinimg.com/736x/5b/ac/94/5bac942d02e70ce67498bf2ff04efe97.jpg" alt="Tesla" class="img-fluid">
+                            <p>Tata</p>
+                        </div>
+                        <div class="col-4 col-md-2 text-center">
+                            <img src="https://cdni.autocarindia.com/ExtraImages/20210809125610_Mahindra_Logo_1.jpg" alt="Nissan" class="img-fluid">
+                            <p>Mahindra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Why People Choose Us -->
+    <section class="why-people-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why People Choose Us</h2>
+            <div class="row choose-us-section">
+                <div class="col-md-6">
+                    <div class="choose-us-image" style="background-image: url('https://thumbs.dreamstime.com/b/cartoon-color-characters-people-couple-buying-car-concept-vector-flat-design-illustration-customer-dealer-yellow-automobile-155952392.jpg'); height: 328px; background-size: cover; background-position: center;"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card" style="background-color: rgba(0, 0, 0, 0.77); color: white; padding: 20px;">
+                        <h5 class="card-title">Local, Family-Owned Dealership</h5>
+                        <p class="card-text">As a local, family-owned dealership, we understand the needs of our customers, and we give back to our local community. We also offer great benefits to all our customers, both new & returning. Feel free to check more reasons for
+                            becoming our client and having a hassle-free buying experience.</p>
+                        <ul class="list-unstyled">
+                            <li>A wide range of affordable vehicles for everyone</li>
+                            <li>Certified vehicles of various types and sizes</li>
+                            <li>Lots of additional products and accessories</li>
+                            <li>Competitive freight options available to every client</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </br>
+    </br>
+
+    <!-- Best Car Deal section -->
+    <div class="container-fluid">
+        <h2 class="text-center my-4">Best Car Deals</h2>
+        <div class="row no-gutters">
+            <div class="col-md-6">
+                <div class="car-deal">
+                    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/car-best-deals-drive-it-design-template-76c855357b35bb8a615896414caad8c6_screen.jpg?ts=1688374384" alt="Car Deal 1" class="img-fluid">
+                    <div class="overlay">
+                        <button class="btn btn-primary">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="car-deal">
+                    <img src="https://www.creativehatti.com/wp-content/uploads/edd/2022/07/Banner-template-of-best-car-rental-deals-5-large.jpg" alt="Car Deal 2" class="img-fluid">
+                    <div class="overlay">
+                        <button class="btn btn-primary">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </br>
+    </br>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="testimonial-content">
+                                <img src="https://www.shutterstock.com/image-vector/young-smiling-man-adam-avatar-600nw-2107967969.jpg" alt="Customer 1" class="customer-img">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Amit Agarwal | Customer</p>
+                                    <footer class="blockquote-footer">TRADER has nice cars, great prices, and good service. I brought my old Citroen C4 with which I had no problems after one month of high mileage use. High price given to me for my car and low price accepted for the car
+                                        I was buying was a huge surprise to me. I recommend this car dealer to everyone!</footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="testimonial-content">
+                                <img src="https://cdn-icons-png.flaticon.com/512/5231/5231019.png" alt="Customer 2" class="customer-img">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Supriya pathak | Customer</p>
+                                    <footer class="blockquote-footer">You guys are really amazing! I have not yet seen a car dealer who offers so much at such an affordable price. I have found what I wanted in your vehicle catalog. Moreover, I have sold my old car with the help of your
+                                        website and your staff provided me with the considerable discount for my new car</footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    </br>
+    </br>
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2024 AutoShop. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Toggle Mega Menu
+          $(document).ready(function() {
+            $('.nav-item.dropdown').hover(function() {
+              $('.mega-menu').toggleClass('active');
+            });
+          });
+    </script>
+</body>
+
+</html>

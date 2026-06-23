@@ -1,0 +1,132 @@
+@if (!isLoading) {
+  @if (currentDashlet=='order') {
+    <h2 class="heading"> Order Summary </h2>
+    <hr>
+      <cx-pdf></cx-pdf>
+      <button class="btn excel-btn" (click)="exportJson()">Export to Excel</button>
+      <table id="orderSummaryDT" class="display" style="width:100%" aria-label="Table for order summary">
+        <thead>
+          <tr class="table-row">
+            <th scope="col">Order No</th>
+            <th scope="col">Order date</th>
+            <th scope="col">Total Amount</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <thead class="filters">
+          <tr class="table-row">
+            <th scope="row">Order No</th>
+            <th scope="row">Order date</th>
+            <th scope="row">Total Amount</th>
+            <th scope="row">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    }
+    @if (currentDashlet=='ticket') {
+      <h2 class="heading"> Ticket Summary </h2>
+      <hr>
+        <cx-pdf></cx-pdf>
+        <button class="btn excel-btn" (click)="exportJson()">Export to Excel</button>
+        <table id="ticketSummaryDT" class="display" style="width:100%;padding:0;border-bottom:none" aria-label="Table for ticket summary">
+          <thead>
+            <tr class="table-row">
+              <th scope="col">Ticket No</th>
+              <th scope="col">Ticket created date</th>
+              <th scope="col">Ticket Category</th>
+              <th scope="col">Status</th>
+              <th scope="col">Customer ID</th>
+            </tr>
+          </thead>
+          <thead class="filters">
+            <tr class="table-row">
+              <th scope="row">Ticket No</th>
+              <th scope="row">Ticket created date</th>
+              <th scope="row">Ticket Category</th>
+              <th scope="row">Status</th>
+              <th scope="row">Customer ID</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      }
+      @if (currentDashlet=='channel') {
+        <h2 class="heading"> Channel Summary </h2>
+        <hr>
+          <cx-pdf></cx-pdf>
+          <button class="btn excel-btn" (click)="exportJson()">Export to Excel</button>
+          <table id="channelSummaryDT" class="display" style="width:100%" aria-label="Table for channel summary">
+            <thead>
+              <tr class="table-row">
+                <th scope="col">Order No</th>
+                <th scope="col">Order date</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <thead class="filters">
+              <tr class="table-row">
+                <th scope="row">Order No</th>
+                <th scope="row">Order date</th>
+                <th scope="row">Total Amount</th>
+                <th scope="row">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        }
+        @if (currentDashlet=='cronJob') {
+          <h2 class="heading"> CronJob </h2>
+          <hr>
+            <cx-pdf></cx-pdf>
+            <button class="btn excel-btn" (click)="exportJson()">Export to Excel</button>
+            <table id="orderSummaryDT" class="display" style="width:100%" aria-label="Table for order summary">
+              <thead>
+                <tr class="table-row">
+                  <th scope="col">Order No</th>
+                  <th scope="col">Order date</th>
+                  <th scope="col">Total Amount</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <thead class="filters">
+                <tr class="table-row">
+                  <th scope="row">Order No</th>
+                  <th scope="row">Order date</th>
+                  <th scope="row">Total Amount</th>
+                  <th scope="row">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          }
+          @if (currentDashlet=='user') {
+            <h2 class="heading">User Activity Summary</h2>
+            <hr>
+              <cx-pdf></cx-pdf>
+              <button class="btn excel-btn" (click)="exportJson()">Export to Excel</button>
+              <table id="userSummaryDT" class="display" style="width:100%" aria-label="Table for user activity summary">
+                <thead>
+                  <tr class="table-row">
+                    <th scope="col">User Name</th>
+                    <th scope="col">User Email</th>
+                  </tr>
+                </thead>
+                <thead class="filters">
+                  <tr class="table-row">
+                    <th scope="row">User Name</th>
+                    <th scope="row">User Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            }
+          } @else {
+            <cx-spinner></cx-spinner>
+          }

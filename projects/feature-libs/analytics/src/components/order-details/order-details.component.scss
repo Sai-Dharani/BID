@@ -1,0 +1,131 @@
+.dashboard-main-content {
+    min-height: 92vh;
+    padding-top: 48px;
+    padding-bottom: 64px;
+    background-color: #f7f9fc;
+     .heading-h4-size{
+        cursor: pointer;
+    }
+}
+.container-default {
+    max-width: 1092px;
+    padding-right: 24px;
+    padding-left: 24px;
+}
+.w-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 940px;
+}
+.module {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e9eaf3;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px 0 rgba(25, 93, 194, 0.07);
+}
+.module.graph-large {
+    margin-bottom: 24px;
+    padding: 28px 36px 56px;
+    border-radius: 30px;
+}
+.order-details{
+    width: 100%;
+    border: 1px solid #3072C5;
+    margin-right: auto;
+    margin-left: auto;
+}
+.order-details td{
+    border: 1px solid #3072C5;
+    padding: 24px;
+}
+.data-label{
+    width: 40%;
+    font-weight: bold;
+}
+.bi{
+    position: absolute;
+    cursor: pointer;
+    font-size: 22px;
+    margin-top: 24px;
+}
+.bi:hover{
+    color: #3072C5;
+}
+.reason{
+    background-color: #fdff32;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.modal{
+    display: contents;
+}
+.text{
+    line-height: 1.5;
+}
+.modal-body{
+    padding: 40px 35px;
+}
+h3.heading {
+    color: #004AAC;
+}
+.ticket-data{
+    line-height: 2;
+    font-size: 13px;
+    padding: 10px !important;
+}
+.btn-link {
+    text-decoration: none;
+    color: #000;
+    font-size: 12px;
+    padding: 5px;
+    width: 100%;
+}
+.btn-link:focus, .btn-link:hover {
+    box-shadow: none;
+    text-decoration: none;
+    color: #000;
+}
+.fa-chevron-down {
+    float: right;
+}
+#accordion button[aria-expanded="false"]  {
+    background-color: #FF7E51;
+    color: #ffffff;
+}
+#accordion button[aria-expanded="true"] {
+    background-color: #FF7E51;
+    color: #ffffff;
+}
+#accordion button[aria-expanded="true"] i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background: white;
+    margin: auto;
+    padding: 0;
+    width: 60%;
+    margin-top: 10%;
+    box-shadow: 0 4px 8px 0 var(--modal-box-shadow),
+    0 6px 20px 0 var(--modal-box-shadow);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+  }
+.link{
+    color: maroon;
+    text-decoration: underline;
+    &:hover,&:active{
+        color: #FF7E51;
+        cursor: pointer;
+    }
+}
+.ticketDetailsLink{
+    position: relative;
+    top: 20px;
+    font-size: 12px;
+}

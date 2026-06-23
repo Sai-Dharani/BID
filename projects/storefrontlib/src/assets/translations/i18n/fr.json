@@ -1,0 +1,72 @@
+{
+    "HOME": {
+        "title": "Composants angulaires réutilisables",
+        "login":"Connexion",
+        "Username": "Nom d'utilisateur",
+        "Password": "Mot de passe",
+        "vailduser": "Le nom d'utilisateur est requis",
+        "validpassword": "Le mot de passe est requis",
+        "back": "Retour",
+        "logout": "Déconnexion"
+    },
+    "DASHBOARD":{
+       "title": "Composants angulaires réutilisables",
+       "sub-title1": "Soumission de formulaire angulaire",
+       "sub-text1": "Formulaire d'inscription avec validation angulaire",
+       "sub-title2": "Validation du formulaire côté client",
+       "sub-text2": "Formulaire d'inscription avec validation angulaire",
+       "sub-title3": "Obtenir les données de l'API et les afficher dans le tableau",
+       "sub-text3": "Pagination",
+       "sub-title4": "Popup modale",
+       "sub-text4": "modal de confirmation et modal d'alerte",
+       "sub-title5": "Spinner/Chargeur",
+       "sub-text5": "Chargement du composant Spinner",
+       "sub-title6": "Composant de sélecteur de date",
+       "sub-title7": "Table de données angulaire",
+       "sub-text7": "Pagination côté serveur",
+       "sub-title8": "Universel angulaire",
+       "sub-text8": "Titre de page dynamique SEO, balises méta",
+       "sub-title9": "Accordéons",
+       "sub-text9": "With & Without Bootstrap",
+       "sub-title10": "Charts",
+       "sub-text10": "Bar, Line, Pie and Donut charts",
+       "sub-title11": "Angular Form Autocomplete",
+       "sub-text12": "Booking Module",
+       "sub-title12": "Sample Booking Module"
+    },
+    "REGISTER":{
+        "title": "Formulaire d'enregistrement",
+        "sub-title1": "JSON",
+        "First Name": "Primer nombre",
+        "Last Name" : "Apellido",
+        "Date of Birth" : "Date de naissance",
+        "Email" : "Correo electrónico",
+        "Password" : "Contraseña",
+        "SignUp" : "Registrar",
+        "Reset" : "Reiniciar",
+        "Action" : "Acción"
+     },
+     "MODAL":{
+        "title": "Composant modal angulaire",  
+        "Confirmationmodal": "Mode de confirmation",
+        "Alertmodal": "Modalité d'alerte"
+ 
+     },
+     "CONTACT":{
+        "title": "Composant du formulaire de contact",
+        "Fullname": "Nom et prénom",
+        "Username" : "Nom d'utilisateur",
+        "Email" : "E-mail",
+        "Message": "Message",
+        "Terms": "J'ai lu et j'accepte les Conditions",
+        "Reset" : "Reiniciar",
+        "Submit" : "Nous faire parvenir"
+ 
+     },
+     "TABLE":{
+        "title": "Composant de table angulaire",
+        "Id":"IDENTIFIANT",
+        "Table-title": "Titre",
+        "Body": "Corps"
+     }
+}

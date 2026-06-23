@@ -1,0 +1,212 @@
+.dashboard-nav-main-container {
+    background-color: #0E1020;
+    box-shadow: 0 2px 12px 0 rgba(11, 22, 44, 0.05);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.dashboard-nav-footer-container {
+    background-color: #0E1020;
+    box-shadow: 0 2px 12px 0 rgba(11, 22, 44, 0.05);
+}
+
+.container-default {
+    padding-left: 24px;
+    padding-right: 24px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: var(--cx-page-width-max);
+}
+
+.dashboard-nav-container {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 12px;
+    min-height: 74px;
+}
+
+.dashboard-nav-left-content {
+    display: flex;
+    justify-self: start;
+    -webkit-box-align: center;
+    align-items: center;
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+
+        a {
+            cursor: pointer;
+        }
+
+        img {
+            width: 140px;
+            height: 60px;
+        }
+    }
+}
+
+.dashboard-nav-center-content {
+    justify-self: stretch;
+    text-align: center;
+    padding: 0 12px;
+    min-width: 0;
+}
+
+.dashboard-title {
+    margin: 0;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(16px, 1.45vw, 28px);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.25;
+    text-transform: capitalize;
+    background: linear-gradient(90deg, #9cd2ff 0%, #ffffff 50%, #ffad86 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 12px rgba(156, 210, 255, 0.22);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dashboard-nav-right-content {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.mg-right-24px {
+    margin-right: 24px;
+}
+
+.text-400 {
+    font-size: 22px;
+    line-height: 1.3em;
+    font-weight: bolder;
+}
+
+.text-300 {
+    font-size: 18px;
+    line-height: 1.3em;
+    font-weight: 500;
+}
+
+.color-neutral-800 {
+    color: white;
+}
+
+.bi-house-fill {
+    color: white;
+    height: 27px;
+    width: 27px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.user-trend-icon {
+    font-size: 24px;
+    color: #9cd2ff;
+    background: rgba(156, 210, 255, 0.14);
+    border: 1px solid rgba(156, 210, 255, 0.4);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-action {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+cx-storefront {
+    background-color: #F6F3F0;
+}
+
+cx-storefront.stop-navigating:before,
+cx-storefront.start-navigating:before,
+cx-storefront.stop-navigating:after,
+cx-storefront.start-navigating:after {
+    height: 0;
+}
+
+.btn-sm {
+    color: white;
+    display: inline-flex;
+    text-transform: capitalize;
+    font-weight: normal;
+    font-size: 16px;
+    align-items: center;
+
+    span {
+        margin-left: 5px;
+    }
+}
+
+.signOut, .signIn {
+    white-space: nowrap;
+    color: white;
+    font-weight: 600;
+}
+
+.dashboard-nav-container-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 15px;
+}
+
+.footer-disclaimer {
+    max-width: 900px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.footer-copy {
+    font-size: 14px;
+    color: #fff;
+}
+
+span {
+    color: white;
+    font-size: 14px;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .dashboard-nav-container {
+        grid-template-columns: auto 1fr auto;
+        min-height: 66px;
+    }
+
+    .dashboard-title {
+        font-size: clamp(16px, 2.5vw, 22px);
+    }
+
+    .dashboard-nav-right-content {
+        gap: 10px;
+    }
+
+    .btn-sm {
+        font-size: 14px;
+    }
+}

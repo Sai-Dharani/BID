@@ -1,0 +1,501 @@
+// Predict button and tooltip styles
+.ticket-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+
+    .w-button {
+        height: 38px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .predict-btn {
+        min-width: 126px;
+        height: 38px;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: none !important;
+        background: linear-gradient(90deg, #6a6af7 0%, #a45de8 100%) !important;
+        color: #fff !important;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(123, 93, 234, 0.35);
+        }
+
+        &:disabled {
+            opacity: 0.75;
+            cursor: not-allowed;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(110deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.42) 50%, rgba(255, 255, 255, 0) 100%);
+            animation: predict-shimmer 2.2s linear infinite;
+        }
+    }
+
+    .predict-content {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .predict-star {
+        font-size: 12px;
+        display: inline-block;
+        animation: predict-star-twinkle 1.2s ease-in-out infinite;
+    }
+}
+
+@keyframes predict-star-twinkle {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    }
+
+    50% {
+        transform: scale(1.18) rotate(10deg);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.9));
+    }
+}
+
+@keyframes predict-shimmer {
+    0% {
+        left: -120%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+.prediction-tooltip {
+    position: absolute;
+    border: 2px solid transparent;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%) padding-box,
+        linear-gradient(90deg, #6125ff 0%, #ff6a00 100%) border-box;
+    min-width: 320px;
+    max-width: 380px;
+    box-shadow: 0 12px 28px rgba(5, 24, 77, 0.25);
+    z-index: 100;
+    top: 66px;
+    right: 12px;
+    overflow: hidden;
+}
+
+.prediction-tooltip-header {
+  position: relative;
+  margin: 0 auto 10px;
+  max-width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+  font-size: 16px;
+  color: #24344a;
+  box-shadow: 0 6px 18px rgba(20, 40, 70, 0.08);
+  overflow: hidden;
+  line-height: 25px;
+  z-index: 1; /* important */
+}
+
+/* Gradient strip */
+.prediction-tooltip-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 50px; /* thin border only */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    #004AAC,
+    #7B2FF7,
+    #ff7a18,
+    #004AAC
+  );
+  animation: gradientMove 4s linear infinite;
+  z-index: 0; /* keep behind content */
+}
+
+/* Make text above gradient */
+.prediction-title {
+  position: relative;
+  z-index: 2;  /* very important */
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+@keyframes gradientMove {
+  0% { left: -100%; }
+  100% { left: 0%; }
+}
+
+
+.close-icon {
+    border: none;
+    background: transparent;
+    color: #ffffff !important;
+    font-size: 19px;
+    line-height: 1;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+    float: right;
+}
+
+.close-icon:hover,
+.close-icon:focus,
+.close-icon:active {
+    color: #ffffff !important;
+}
+
+.prediction-tooltip-body {
+    position: relative;
+    padding: 14px 16px 16px;
+}
+
+.prediction-popup-sparkle {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 20px;
+    line-height: 1;
+    animation: predict-star-twinkle 1.2s ease-in-out infinite;
+}
+
+.prediction-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.prediction-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4a5672;
+}
+
+.prediction-value {
+    display: inline-block;
+    width: fit-content;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.highlighted-date {
+    background: #fff2db;
+    color: #9a4b00;
+    border-left: 4px solid #ff9f2f;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.highlighted-count {
+    background: #e8efff;
+    color: #0f3bb8;
+    border-left: 4px solid #3f6fff;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.dashboardBanner {
+    width: 100%;
+    height: 270px;
+}
+
+.dashboard-banner {
+    margin: 0px 0px 40px 0px;
+}
+
+// Tab Navigation Styles
+.tab-navigation {
+    margin: 0px 0px 50px;
+    border-bottom: 3px solid #D14600; // Red underline for container - made bolder
+
+    .tabs-container {
+        display: flex;
+        gap: 8px;
+
+        .tab-button {
+            padding: 12px 28px;
+            background: #FFFFFF; // White background for inactive tabs
+            border: 2px solid #E9EAF3; // Bolder border for visibility
+            border-bottom: none;
+            border-radius: 12px 12px 0 0; // Rounded top corners
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #0E1020; // Midnight Blue text for inactive
+            transition: all 0.3s ease;
+            position: relative;
+            bottom: -3px; // Adjusted for thicker border
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+
+            &:hover:not(.active) {
+                background: #FFC982; // Peach color - more visible on hover
+                color: #0E1020; // Midnight Blue text
+                border-color: #FFC982;
+                transform: translateY(-2px);
+                box-shadow: 0 -4px 10px rgba(255, 201, 130, 0.4);
+            }
+
+            &.active {
+                background: #FF7E51; // Melon/Orange background for active tab
+                color: #FFFFFF; // White text for active
+                font-weight: 700; // Bolder font
+                border: 2px solid #FF7E51;
+                border-bottom: 3px solid #D14600; // Much bolder red underline for active tab
+                box-shadow: 0 -4px 12px rgba(255, 126, 81, 0.3);
+            }
+        }
+    }
+}
+
+// Blank content styles
+.blank-content {
+    padding: 60px 20px;
+    text-align: center;
+    min-height: 400px;
+
+    .blank-message {
+        font-size: 18px;
+        color: #666;
+        font-weight: 500;
+    }
+}
+
+.dashboard-main-content {
+    min-height: 92vh;
+    padding-top: 48px;
+    padding-bottom: 64px;
+    background-color: #F6F3F0;
+
+    .heading-h4-size {
+        cursor: pointer;
+    }
+}
+
+.container-default {
+    max-width: 1092px;
+    padding-right: 24px;
+    padding-left: 24px;
+}
+
+.w-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 940px;
+}
+
+.module.graph-large {
+    margin-bottom: 24px;
+    padding: 19px 20px 10px;
+    border-radius: 30px;
+}
+
+.module {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e9eaf3;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px 0 rgba(25, 93, 194, 0.07);
+}
+
+.text-300.bold {
+    font-weight: 700;
+    color: #004AAC;
+}
+
+.text-300 {
+    font-size: 16px;
+    line-height: 1.125em;
+}
+
+.dropbtn {
+    z-index: 1;
+    padding: 10px 10px 10px 14px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e9eaf3;
+    border-radius: 38px;
+    background-color: #fff;
+    cursor: pointer;
+    color: rgb(111, 113, 130);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.167em;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    justify-self: end;
+}
+
+
+.dropbtn a {
+    color: #6f7182;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.divider.top-20px---bottom-52px {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.divider {
+    height: 1px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    background-color: #e9eaf3;
+}
+
+.w-button {
+    padding: 8px 12px;
+    justify-content: center;
+    border-radius: 44px;
+    background-color: #0E1020 !important;
+    color: #fff !important;
+    font-size: 12px;
+    line-height: 1.143em;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+}
+
+.w-button:hover {
+    background-color: #fff !important;
+    color: #0E1020 !important;
+    border: 1px solid #0E1020;
+}
+
+.chartSection {
+    margin: 0px;
+}
+
+.ft_heading {
+    text-align: center;
+
+    .d_f,
+    .d_t,
+    .b_s {
+        color: #D14600;
+    }
+}
+
+.ft_heading.glass-date-line {
+    position: relative;
+    margin: 0 auto 10px;
+    max-width: 92%;
+    padding: 12px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+    border-radius: 12px;
+    font-size: 16px;
+    color: #24344a;
+    box-shadow: 0 6px 18px rgba(20, 40, 70, 0.08);
+    overflow: hidden;
+    line-height: 25px;
+
+    &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 6px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            background: linear-gradient(90deg,
+                    #004AAC,
+                    #7B2FF7,
+                    #ff7a18,
+                    #004AAC);
+            animation: gradientMove 4s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 0%;
+            }
+        }
+
+        .date-line-label {
+            font-weight: 700;
+            color: #1f2f45;
+        }
+
+        .date-range-chip,
+        .website-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0;
+            border-radius: 0;
+            background: transparent;
+            border: none;
+        }
+
+        .to-text {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1f2f45;
+            text-transform: uppercase;
+        }
+
+        .d_f,
+        .d_t,
+        .b_s {
+            color: #c14a11;
+            font-weight: 800;
+            letter-spacing: 0.1px;
+        }
+    }
+
+    .ft_heading.info {
+        margin-top: 6px;
+    }

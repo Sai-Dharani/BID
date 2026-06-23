@@ -1,0 +1,66 @@
+{
+    "HOME": {
+        "title": "Composants angulaires réutilisables",
+        "login":"iniciar sesión",
+        "Username": "Nombre de usuario",
+        "Password": "Contraseña",
+        "vailduser": "Se requiere nombre de usuario",
+        "validpassword": "se requiere contraseña",
+        "back": "Atrás",
+        "logout": "Cerrar sesión"
+    },
+    "DASHBOARD":{
+       "title": "Composants angulaires réutilisables",
+       "sub-title1": "Soumission de formulaire angulaire",
+       "sub-text1": "Formulaire d'inscription avec validation angulaire",
+       "sub-title2": "Validation du formulaire côté client",
+       "sub-text2": "Formulaire d'inscription avec validation angulaire",
+       "sub-title3": "Obtenir les données de l'API et les afficher dans le tableau",
+       "sub-text3": "Pagination",
+       "sub-title4": "Popup modale",
+       "sub-text4": "modal de confirmation et modal d'alerte",
+       "sub-title5": "Girador/ Cargador",
+       "sub-text5": "Cargando componente giratorio",
+       "sub-title6": "Componente selector de fecha",
+       "sub-title7": "Tabla de datos angular",
+       "sub-text7": "Paginación con el lado del servidor",
+       "sub-title8": "Angular Universal",
+       "sub-text8": "Título de la página dinámica SEO, metaetiquetas",
+       "sub-title9": "Angular Form Autocomplete"
+    },
+    "REGISTER":{
+        "title": "Formulario de registro",
+        "sub-title1": "JSON",
+        "First Name": "Primer nombre",
+        "Last Name" : "Apellido",
+        "Date of Birth" : "Fecha de nacimiento",
+        "Email" : "Correo electrónico",
+        "Password" : "Contraseña",
+        "SignUp" : "Registrarse",
+        "Reset" : "Reiniciar",
+        "Action" : "Acción"
+     },
+     "MODAL":{
+        "title": "Composant modal angulaire",
+        "Confirmationmodal": "Modo de confirmación",
+        "Alertmodal": "alerta modal"
+     },
+     "CONTACT":{
+      "title": "Componente de formulario de contacto",
+      "Fullname": "Nombre completo",
+      "Username" : "Nombre de usuario",
+      "Email" : "Correo electrónico",
+      "Message": "Mensaje",
+      "terms": "He leído y acepto los Términos",
+      "Reset" : "Reiniciar",
+      "Submit" : "Entregar"
+ 
+     },
+     "TABLE":{
+        "title": "Composant de table angulaire",
+        "Id":"IDENTIFICACIÓN",
+        "Table-title": "Título",
+        "Body": "Cuerpo"
+ 
+     }
+}

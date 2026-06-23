@@ -1,0 +1,16 @@
+### HEADER IMPEX ###
+$contentCatalog=electronicsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+$lang=en
+$picture=media(code, $contentCV)[lang=$lang]
+
+# Site Logo Component #
+INSERT_UPDATE PSSimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;$picture;title[lang=$lang];urlLink;styleClass
+;;HybrisLogoComponent;Hybris Logo Component;HybrisLogoComponent;/images/theme/hybris_logo.jpg;"Public Accelerator logo";"/";
+;;SiteLogoComponent;Site Logo Component;SiteLogoComponent;/images/theme/publicSector_logo.jpg;"State of Rosebud logo";"/";
+
+# ContentSlot for SiteLogo #
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;cmsComponents(uid, $contentCV);
+;;TopHeaderSlot;Top Header Slot;HybrisLogoComponent
+;;SiteLogoSlot;Site Logo Slot;SiteLogoComponent
+

@@ -1,0 +1,53 @@
+label {
+    display: inline-block;
+}
+.modal-backdrop {
+    z-index: 1040 !important;
+}
+.modal-backdrop.fade {
+    opacity: 0;
+}
+cx-registration, cx-contact {
+    .form-group .btn-primary {
+        margin: 0px 20px 0px 0px;
+    }
+}
+cx-contact {
+    .form-check {
+        padding-inline-start: 25px;
+    }
+    .form-check-input.is-invalid ~ .form-check-label {
+        color: black;
+        padding-left: 5px;
+    }
+}
+app-mymodal {
+    .modal-body {
+        line-height: 22px;
+    }
+    form .form-group textarea.form-control {
+        height: auto !important;
+    }
+}
+app-accordion {
+    .container {
+        max-width: 1320px;
+        .card-body {
+            line-height: normal;
+        }
+    }
+}
+p, li, label, div, td {
+    line-height: normal;
+}
+cx-page-slot.SiteLogin {
+    max-width: 140px;
+    width: 100%;
+    display: block;
+    cx-login .cx-login-greet {
+        margin-left: 10px;
+    }
+}
+.color-neutral-800 {
+    padding: 10px 0px;
+}

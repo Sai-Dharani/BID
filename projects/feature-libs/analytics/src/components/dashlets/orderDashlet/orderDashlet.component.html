@@ -1,0 +1,116 @@
+@if (dateRange > 0 && (stuckData || progressData || completedData || failedData || cancelledData)) {
+  <div class="total-header">
+    <h4 class="total-title">Total Orders: <span class="total-count-value">{{(stuckData || 0) + (progressData || 0) + (completedData || 0) + (failedData || 0) + (cancelledData || 0)}}</span></h4>
+  </div>
+}
+<div class="reports-top-details-container">
+  <div class="c_tab col-md-2 col-sm-2">
+      <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='stuck'"
+        data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+        class="module reports-top-details orderStuck" (click)="onTabSelection('stuck', stuckData)"
+        [attr.disabled]="(stuckData > 0 && dateRange > 0) ? null : true">
+        <img src="assets/icons/orderStuck.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+          class="reports-top-details-icon">
+          <div>
+            <div class="text-200 medium">Stuck</div>
+            <div class="flex align-end">
+              @if (dateRange > 0) {
+                <div class="stuck display-4 mg-right-6px">
+                  {{stuckData}}
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+  <div class="c_tab col-md-2 col-sm-2">
+        <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='inprogress'"
+          data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+          class="module reports-top-details orderProgress" (click)="onTabSelection('inprogress',progressData)"
+          [attr.disabled]="(progressData > 0 && dateRange > 0) ? null : true">
+          <img src="assets/icons/orderFailure.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+            class="reports-top-details-icon">
+            <div>
+              <div class="text-200 medium">Progress</div>
+              <div class="flex align-end">
+                @if (dateRange > 0) {
+                  <div class="_progress display-4 mg-right-6px">
+                  {{progressData}}</div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+  <div class=" c_tab col-md-2 col-sm-2">
+          <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='completed'"
+            data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+            class="module reports-top-details orderCompleted" (click)="onTabSelection('completed', completedData);"
+            [attr.disabled]="(completedData > 0 && dateRange > 0) ? null : true">
+            <img src="assets/icons/orderCompleted.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+              class="reports-top-details-icon">
+              <div>
+                <div class="text-200 medium">Completed</div>
+                <div class="flex align-end">
+                  @if (dateRange > 0) {
+                    <div class="completed display-4 mg-right-6px">
+                    {{completedData}}</div>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+  <div class="c_tab col-md-2 col-sm-2">
+            <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='failure'"
+              data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+              class="module reports-top-details orderFailure" (click)="onTabSelection('failure', failedData)"
+              [attr.disabled]="(failedData > 0 && dateRange > 0) ? null : true">
+              <img src="assets/icons/orderProgress.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+                class="reports-top-details-icon">
+                <div>
+                  <div class="text-200 medium">Failed</div>
+                  <div class="flex align-end">
+                    @if (dateRange > 0) {
+                      <div class="failure display-4 mg-right-6px">
+                        {{failedData}}
+                      </div>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+  <div class="c_tab col-md-2 col-sm-2">
+              <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='cancelled'"
+                data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+                class="module reports-top-details orderCancelled"
+                [attr.disabled]="(cancelledData > 0 && dateRange > 0) ? null : true"
+                (click)="onTabSelection('cancelled', cancelledData)">
+                <img src="assets/icons/orderCancelled.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+                  class="reports-top-details-icon">
+          <div>
+            <div class="text-200 medium">Cancelled</div>
+            <div class="flex align-end">
+              @if (dateRange > 0) {
+                <div class="cancelled display-4 mg-right-6px">
+                {{cancelledData}}</div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+@if (selectedTab !='' && dateRange > 0) {
+            <div class="reports-top-details-container">
+              <div class="row col-md-12 col-sm-12 tabs">
+                @if (orderSubStatus | async; as statuses) {
+                  @if (statuses && statuses.length > 0) {
+                    @for (status of statuses; track status) {
+                      <div class="subStatus pl-3">
+                        <span>{{status?.key}}: </span>
+                        <b>{{status?.value}}</b>
+                      </div>
+                    }
+                  }
+                }
+              </div>
+            </div>
+          }

@@ -1,0 +1,78 @@
+<div class="chatbot-container">
+
+  <!-- Floating button with tooltip -->
+  <div class="chatbot-fab-container" *ngIf="!isOpen">
+    <button class="chatbot-fab" type="button" (click)="toggleChat()" aria-label="Open chat assistant">
+      <i class="fa fa-comments" aria-hidden="true"></i>
+      <span class="fab-ring" aria-hidden="true"></span>
+    </button>
+
+  </div>
+
+  <!-- Chat body -->
+  <div class="chatbot-body" *ngIf="isOpen">
+
+    <!-- Chat header -->
+<div class="chatbot-header">
+  <div class="header-left">
+    <i class="fa fa-comments header-icon"></i>
+    <span class="chat-title">ICX Chat Assistant</span>
+  </div>
+
+  <button class="header-close" type="button" (click)="toggleChat()" aria-label="Close chat">
+    <i class="fa fa-times"></i>
+  </button>
+</div>
+
+    <!-- Messages -->
+<div class="messages">
+  <div *ngFor="let msg of messages" [ngClass]="msg.type">
+    {{ msg.text }}
+  </div>
+
+  <!-- Bot Typing Bubble -->
+  <div class="bot-typing-wrapper" *ngIf="isBotLoading">
+    <div class="bot-typing">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div>
+
+    <!-- Input -->
+    <div class="chat-input">
+      <button
+        class="mic-btn"
+        *ngIf="isSpeechSupported"
+        type="button"
+        (click)="toggleVoiceTyping()"
+        [class.listening]="isListening"
+        [disabled]="isBotLoading"
+        [attr.aria-label]="isListening ? 'Stop voice typing' : 'Start voice typing'"
+      >
+        <i class="fa" [ngClass]="isListening ? 'fa-stop-circle' : 'fa-microphone'"></i>
+      </button>
+
+      <input
+        #chatInput
+        type="text"
+        [(ngModel)]="userMessage"
+        (keyup.enter)="sendMessage()"
+        [disabled]="isBotLoading"
+        [placeholder]="isListening ? 'Listening...' : 'Type your message...'"
+      />
+      <button
+        class="send-btn"
+        type="button"
+        (click)="sendMessage()"
+        [disabled]="!userMessage.trim() || isBotLoading"
+      >
+        Send
+      </button>
+    </div>
+
+    <div class="speech-error" *ngIf="speechError">{{ speechError }}</div>
+
+  </div>
+</div>

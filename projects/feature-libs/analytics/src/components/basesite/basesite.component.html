@@ -1,0 +1,17 @@
+ <div class="dropdown-wrapper">
+            <label class="dropdown-label">Select BaseSite:</label>
+            <button class="dropdown-btn" (click)="toggle()">
+                <span>{{ selected || 'Select BaseSite' }}</span>
+                <span *ngIf="selected" class="clear-btn" (click)="clearSelection($event)">
+                    ✕
+                </span>
+            </button>
+
+            <div class="dropdown-menu" *ngIf="open">
+                <input type="text" class="dropdown-search" placeholder="Search BaseSite" [value]="searchText"
+                    (input)="filter($any($event.target).value)" />
+                <div class="dropdown-item" *ngFor="let site of filteredBaseSites" (click)="select(site)">
+                    {{ site }}
+                </div>
+            </div>
+        </div>

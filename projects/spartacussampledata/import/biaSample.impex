@@ -1,0 +1,234 @@
+ $storeUid = electronics
+ $siteUid = electronics
+ $defaultPassword = 123
+
+INSERT_UPDATE Customer; groups(uid)   ; uid[unique = true]; name             ; title(code); type(code) ; &customerId	;password[default=$defaultPassword]
+                      ; customergroup ; test1@bia.com     ; Test1 User       ; ms         ; REGISTERED ; test1@bia.com
+                      ; customergroup ; test2@bia.com     ; Test2 User       ; ms         ; REGISTERED ; test2@bia.com
+                      ; customergroup ; test3@bia.com     ; Test3 User       ; mr         ; REGISTERED ; test3@bia.com
+                      ; customergroup ; admin@bia.com     ; Admin User       ; mr         ; REGISTERED ; admin@bia.com
+
+
+INSERT_UPDATE Order; code[unique = true]; user(uid)     ; date[dateformat = dd.MM.yyyy HH:mm]; currency(isocode); net; deliveryMode(code)	; Discounts(code)		; calculated	; store(uid)[default=$storeUid]			; placedBy(uid)       		; status(code)				; expirationTime[dateformat = dd.MM.yyyy HH:mm];statusDisplay; salesapplication(code)[default=Web]
+                   	;00003002	;	 test1@bia.com   	;	 03.01.2022 07:56   ;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 COMPLETED   			;;completed;
+                   	;00003003	;	 test1@bia.com   	;	 03.01.2022 07:57	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 COMPLETED   			;;completed;
+                   	;00003004	;	 test2@bia.com   	;	 03.01.2022 07:58	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;CallCenter
+                   	;00003005	;	 test1@bia.com   	;	 03.01.2022 07:59	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003006	;	 test1@bia.com   	;	 04.01.2022 07:60	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;CallCenter
+                   	;00003007	;	 test2@bia.com   	;	 05.01.2022 07:56   ;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003008	;	 test1@bia.com   	;	 06.02.2022 07:56   ;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;
+                   	;00003009	;	 test3@bia.com   	;	 15.02.2022 07:56   ;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;
+                   	;00003010	;	 test1@bia.com   	;	 16.03.2022 07:57	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003011	;	 test2@bia.com   	;	 17.03.2022 07:58	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 CANCELLED   			;;cancelled;WebMobile
+                   	;00003012	;	 test1@bia.com   	;	 17.03.2022 07:59	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   	        ;;rejected;WebMobile
+                   	;00003013	;	 test3@bia.com   	;	 17.03.2022 07:60	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 CANCELLED   	        ;;cancelled;WebMobile
+                   	;00003014	;	 test1@bia.com   	;	 18.04.2022 07:61	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003015	;	 test2@bia.com   	;	 20.04.2022 07:62	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003016	;	 test1@bia.com   	;	 21.04.2022 07:63	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;
+                   	;00003017	;	 test3@bia.com   	;	 21.04.2022 07:64	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003018	;	 test1@bia.com   	;	 15.05.2022 07:65	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003019	;	 test2@bia.com   	;	 16.05.2022 07:66	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003020	;	 test1@bia.com   	;	 17.05.2022 07:67	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003021	;	 test3@bia.com   	;	 15.06.2022 07:68	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003022	;	 test1@bia.com   	;	 15.06.2022 07:69	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003023	;	 test2@bia.com   	;	 15.07.2022 07:70	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003024	;	 test1@bia.com   	;	 16.08.2022 07:71	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;CallCenter
+                   	;00003025	;	 test3@bia.com   	;	 19.08.2022 07:72	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;
+                   	;00003026	;	 test1@bia.com   	;	 07.09.2022 07:73	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003027	;	 test2@bia.com   	;	 18.09.2022 07:74	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;completed;WebMobile
+                   	;00003028	;	 test1@bia.com   	;	 06.10.2022 07:75	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003029	;	 test3@bia.com   	;	 15.10.2022 07:76	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003030	;	 test1@bia.com   	;	 17.10.2022 07:77	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003031	;	 test2@bia.com   	;	 19.10.2022 07:78	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003032	;	 test1@bia.com   	;	 20.10.2022 07:79	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;
+                   	;00003033	;	 test3@bia.com   	;	 02.11.2022 07:80	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;
+                   	;00003034	;	 test1@bia.com   	;	 12.11.2022 07:81	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;
+                   	;00003035	;	 test2@bia.com   	;	 15.11.2022 07:82	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;completed;WebMobile
+                   	;00003036	;	 test1@bia.com   	;	 26.12.2022 07:83	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003037	;	 test3@bia.com   	;	 27.12.2022 07:84	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;WebMobile
+					;00003038	;	 test1@bia.com   	;	 27.12.2022 07:85	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003039	;	 test2@bia.com   	;	 28.12.2022 07:86	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003040	;	 test1@bia.com   	;	 28.12.2022 07:87	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003041	;	 test3@bia.com   	;	 01.01.2023 07:88	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;
+                   	;00003042	;	 test1@bia.com   	;	 01.01.2023 07:89	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;
+                   	;00003043	;	 test2@bia.com   	;	 02.01.2023 07:90	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;completed;
+                   	;00003044	;	 test1@bia.com   	;	 02.01.2023 07:91	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003045	;	 test3@bia.com   	;	 02.01.2023 07:92	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;
+                   	;00003046	;	 test1@bia.com   	;	 03.01.2023 07:93	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003047	;	 test2@bia.com   	;	 03.01.2023 07:94	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003048	;	 test1@bia.com   	;	 07.01.2023 07:95	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;CallCenter
+                   	;00003049	;	 test3@bia.com   	;	 09.01.2023 07:96	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;
+                   	;00003050	;	 test1@bia.com   	;	 10.01.2023 07:97	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;CallCenter
+                   	;00003051	;	 test2@bia.com   	;	 10.01.2023 07:98	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;completed;
+                   	;00003052	;	 test1@bia.com   	;	 17.01.2023 07:99	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003053	;	 test3@bia.com   	;	 20.01.2023 07:100	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003054	;	 test1@bia.com   	;	 28.01.2023 07:101	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003055	;	 test2@bia.com   	;	 01.02.2023 07:102	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003056	;	 test1@bia.com   	;	 02.02.2023 07:103	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;
+                   	;00003057	;	 test3@bia.com   	;	 03.02.2023 07:104	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;
+                   	;00003058	;	 test1@bia.com   	;	 03.02.2023 07:105	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;
+                   	;00003059	;	 test2@bia.com   	;	 04.02.2023 07:106	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;completed;
+                   	;00003060	;	 test1@bia.com   	;	 08.02.2023 07:107	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003061	;	 test3@bia.com   	;	 10.02.2023 07:108	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;CallCenter
+                   	;00003062	;	 test1@bia.com   	;	 15.02.2023 07:109	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003063	;	 test2@bia.com   	;	 15.02.2023 07:110	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003064	;	 test1@bia.com   	;	 19.02.2023 07:111	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;
+                   	;00003065	;	 test3@bia.com   	;	 20.02.2023 07:112	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003066	;	 test1@bia.com   	;	 21.02.2023 07:113	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;
+                   	;00003067	;	 test2@bia.com   	;	 22.02.2023 07:114	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;rejected;WebMobile
+                   	;00003068	;	 test1@bia.com   	;	 23.02.2023 07:115	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003069	;	 test3@bia.com   	;	 26.02.2023 07:116	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;
+                   	;00003070	;	 test1@bia.com   	;	 27.02.2023 07:117	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003071	;	 test2@bia.com   	;	 27.02.2023 07:118	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003072	;	 test1@bia.com   	;	 28.02.2023 07:119	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;
+                   	;00003073	;	 test3@bia.com   	;	 28.02.2023 07:120	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;
+                   	;00003074	;	 test1@bia.com   	;	 28.02.2023 07:121	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;
+                   	;00003075	;	 test2@bia.com   	;	 28.02.2023 07:122	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;completed;WebMobile
+                   	;00003076	;	 test1@bia.com   	;	 28.02.2023 07:123	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003077	;	 test3@bia.com   	;	 01.03.2023 07:124	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003078	;	 test1@bia.com   	;	 03.03.2023 07:125	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003079	;	 test2@bia.com   	;	 05.03.2023 07:126	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003080	;	 test1@bia.com   	;	 05.03.2023 07:127	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;
+                   	;00003081	;	 test3@bia.com   	;	 07.03.2023 07:128	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;
+                   	;00003082	;	 test1@bia.com   	;	 08.03.2023 07:129	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003083	;	 test2@bia.com   	;	 10.03.2023 07:130	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;completed;WebMobile
+                   	;00003084	;	 test1@bia.com   	;	 10.03.2023 07:131	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003085	;	 test3@bia.com   	;	 15.03.2023 07:132	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;
+                   	;00003086	;	 test1@bia.com   	;	 15.07.2023 07:133	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003087	;	 test2@bia.com   	;	 15.07.2023 07:134	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003088	;	 test1@bia.com   	;	 17.07.2023 07:135	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003089	;	 test3@bia.com   	;	 18.07.2023 07:136	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003090	;	 test1@bia.com   	;	 19.07.2023 07:137	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003091	;	 test2@bia.com   	;	 20.07.2023 07:138	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;completed;WebMobile
+                   	;00003092	;	 test1@bia.com   	;	 21.07.2023 07:139	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003093	;	 test3@bia.com   	;	 22.07.2023 07:140	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;
+                   	;00003094	;	 test1@bia.com   	;	 13.05.2023 07:141	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003095	;	 test2@bia.com   	;	 23.07.2023 07:142	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 PROCESSING_ERROR   	;;error;
+                   	;00003096	;	 test1@bia.com   	;	 17.07.2023 07:143	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 REJECTED   			;;rejected;
+                   	;00003097	;	 test3@bia.com   	;	 25.07.2025 07:144	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 PROCESSING_ERROR   	;;error;
+                   	;00003098	;	 test1@bia.com   	;	 26.05.2025 07:145	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;
+                   	;00003099	;	 test2@bia.com   	;	 28.07.2025 07:146	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;rejected;WebMobile
+                   	;00003100	;	 test1@bia.com   	;	 28.05.2025 07:147	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 PROCESSING_ERROR   	;;error;WebMobile
+                   	;00003101	;	 test3@bia.com   	;	 28.07.2025 07:148	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED  	 			;;rejected;
+                   	;00003102	;	 test3@bia.com   	;	 29.07.2026 07:149	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 CANCELLED   			;;cancelled;CallCenter
+                   	;00003103	;	 test3@bia.com   	;	 29.07.2026 07:150	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test3@bia.com       	;	 REJECTED   			;;rejected;
+					;00003104	;	 test1@bia.com   	;	 29.07.2026 07:145	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;									   	;	 test1@bia.com  	 	;	 REJECTED   			;;rejected;WebMobile
+                   	;00003105	;	 test2@bia.com   	;	 31.07.2026 07:146	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test2@bia.com  	 	;	 COMPLETED   			;;rejected;WebMobile
+                   	;00003106	;	 test1@bia.com   	;	 31.07.2026 07:147	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com   	 	;	 CREATED				;;processiing;CallCenter
+                   	;00003107	;	 test1@bia.com   	;	 31.07.2026 07:148	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com       	;	 CREATED				;;processiing;
+                   	;00003108	;	 test1@bia.com   	;	 27.07.2026 07:149	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com       	;	 CANCELLED   			;;cancelled;WebMobile
+                   	;00003109	;	 test1@bia.com   	;	 28.07.2026 07:150	;	 GBP              	;	 false 	;	                   	;	                	;	 false     	;	 								   	;	 test1@bia.com       	;	 CREATED   			    ;;processing;
+
+
+INSERT_UPDATE OrderEntry; order(code)[unique = true]; product(code, catalogVersion(catalog(id), version))       ; quantity; calculated; unit(code); entryNumber;
+                         	;00003002	;	 1494590:electronicsProductCatalog:Online   			  			;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003003	;	 1494590:electronicsProductCatalog:Online 			  				;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003004	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003005	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003006	;	 1494590:electronicsProductCatalog:Online   			  			;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003007	;	 1494590:electronicsProductCatalog:Online 			  				;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003008	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003009	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003010	;	 1494590:electronicsProductCatalog:Online   			  			;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003011	;	 1494590:electronicsProductCatalog:Online 			  				;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003012	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003013	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003014	;	 1494590:electronicsProductCatalog:Online   			  			;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003015	;	 1494590:electronicsProductCatalog:Online 			  				;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003016	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003017	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003018	;	 1494590:electronicsProductCatalog:Online   			  			;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003019	;	 1494590:electronicsProductCatalog:Online 			  				;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003020	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003021	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003022	;	 1494590:electronicsProductCatalog:Online   			  			;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003023	;	 1494590:electronicsProductCatalog:Online 			  				;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003024	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003025	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003026	;	 1494590:electronicsProductCatalog:Online   			  			;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003027	;	 1494590:electronicsProductCatalog:Online 			  				;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003028	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003029	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003030	;	 1494590:electronicsProductCatalog:Online   			  			;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003031	;	 1494590:electronicsProductCatalog:Online 			  				;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003032	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+                        	;00003033	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003034	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003035	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003036	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003037	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003038	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003039	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003040	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003041	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003042	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003043	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003044	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003045	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003046	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003047	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003048	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003049	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003050	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003051	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003052	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003053	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003054	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003055	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003056	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003057	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003058	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003059	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003060	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003061	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003062	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003063	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003064	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003065	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003066	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003067	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003068	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003069	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003070	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003071	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003072	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003073	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003074	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003075	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003076	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003077	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003078	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003079	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003080	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003081	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003082	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003083	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003084	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003085	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003086	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003087	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003088	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003089	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003090	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003091	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003092	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003093	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003094	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003095	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003096	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003097	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003098	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003099	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003100	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003101	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003102	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003103	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003104	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003105	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003106	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003107	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003108	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+							;00003109	;	 1494590:electronicsProductCatalog:Online            			  	;	1	;	 false     	;	 pieces    	;	0	;
+
+
+

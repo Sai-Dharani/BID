@@ -1,0 +1,100 @@
+.container{
+    padding: 0%;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+.bi.bi-calendar3::before{
+    vertical-align: 1.5em;
+    font-size: 23px;
+    bottom: 0;
+    position: relative;
+}
+
+.form-control[readonly] {
+    background-color: var(--cx-color-canvas);
+}
+.input-group{
+    .btn-outline-secondary.bi-calendar3{
+        margin-left: -1px;
+        position: relative;
+        z-index: 2;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        height: 40px !important;
+        &:hover,&:active{
+            background-color: var(--cx-color-royal);
+            border-color: var(--cx-color-royal);
+        }
+    }
+}
+.form-control{
+    height: 40px !important;
+}
+.btn-light {
+    background-color: white !important;
+}
+.filter-button {
+    padding: 5px;
+    border-radius: 44px;
+    background-color: var(--cx-color-peach);
+    color: #000;
+    position: relative;
+    display: block;
+    top: 35px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    height: 32px;
+    width: 100px;
+    margin-left: 50px;
+}
+.filter-button:hover {
+    background-color: #fff !important;
+    text-decoration: none;
+    color: #000 !important;
+    border: 1px solid;
+}
+.reset-button {
+    padding: 5px;
+    border-radius: 44px;
+    background-color: var(--cx-color-blue);
+    color: #fff;
+    position: relative;
+    display: block;
+    top: 35px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    height: 32px;
+    width: 100px;
+    margin-left: 20px;
+}
+.reset-button:hover {
+    background-color: #fff !important;
+    text-decoration: none;
+    color: #000 !important;
+    border: 1px solid;
+}
+.ngb-dp-arrow .btn{
+    padding: 0px;
+    width: 0px;
+    bottom: 5px;
+    margin: 0px;
+    position: relative;
+}
+.ngb-dp-arrow .btn:hover{
+    outline: none;
+}
+.ngb-dp-arrow .btn:focus{
+    box-shadow: none;
+}
+.text-white {
+    color: #000 !important;
+}
+form .input-group .btn.bi-calendar3{
+    min-height: 41px;
+}

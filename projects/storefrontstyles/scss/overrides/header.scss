@@ -1,0 +1,140 @@
+header {
+  background-color: var(--cx-color-light) !important;
+
+  .header {
+    max-width: 100% !important;
+    background: var(--header-background-color);
+    padding: 0 !important;
+
+    .TopHeaderSlot {
+      padding: 0.5rem 2rem;
+      flex: 100%;
+      border: 1px solid var(--nav-border-color);
+
+      cx-banner {
+        img {
+          width: auto;
+        }
+      }
+    }
+
+    .SiteLogo {
+      padding: 0.5rem 2rem;
+      flex: 50%;
+
+      cx-banner {
+        img {
+          width: auto;
+        }
+      }
+    }
+    .NavigationBar {
+      background: var(--cx-color-dark);
+      padding: 0.5rem 1.5rem;
+    }
+
+  }
+
+}
+.SiteLogin {
+  padding: 0px;
+  color: var(--cx-color-dark);
+  font-size: 13px;
+  font-weight: normal;
+  display: block;
+  text-transform: capitalize;
+
+  cx-login {
+    display: flex;
+    // position: absolute;
+    // top: 6.5%;
+    // right: 8%;
+
+    .cx-login-greet {
+      color: var(--cx-color-light);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      max-width: 215px;
+      margin-left: 25px;
+    }
+    a{
+      font-size: 14px;
+      color: var(--cx-color-light);
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 600;
+    }
+  }
+}
+a.signOut{
+  font-size: 14px;
+  color: var(--cx-color-light);
+  text-decoration: none;
+  width: 75px;
+  margin-left: 25px;  
+  display: flex;
+  flex: 12%;  
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.HeaderLinks {
+  flex: 1;
+  display: block;
+  cx-generic-link{
+    padding-left: 18%;
+    display: none;
+  }
+}
+
+// header, main, footer {
+//   width: var(--cx-page-width-max);
+//   margin-left: auto;
+//   margin-right: auto;
+//   // margin: auto;
+// }
+
+cx-storefront.stop-navigating:after {
+  background-color: var(--header-background-color) !important;
+}
+/*--------------------Mobile View------------------------------*/
+@media (max-width: 640px)  {
+  .PreHeader{
+    position: absolute;
+    right: 5px;
+    margin-bottom: 30%;
+  }
+  .signOut{
+    margin-left: 15px;
+  }
+  header.is-expanded .navigation {
+    height: 15% !important;
+    display: flex;
+  }
+  cx-login .cx-login-greet {
+    line-height: var(--cx-line-height, 3.0) !important;
+  }
+}
+/*--------------------Tablet View------------------------------*/
+@media (min-width: 768px) and (max-width: 991.98px){
+  .PreHeader{
+    position: absolute;
+    right: 5px;
+    margin-bottom: 7%;
+  }
+  .signOut{
+    margin-left: 15px;
+  }
+  cx-login .cx-login-greet {
+    line-height: var(--cx-line-height, 3.0) !important;
+  }
+  header.is-expanded .navigation {
+    height: 10%;
+    display: flex;
+  }
+}
+
+
+
+

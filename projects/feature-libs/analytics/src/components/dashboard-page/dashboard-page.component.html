@@ -1,0 +1,167 @@
+<div class="dashboard-main-content">
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <div class="tabs-container">
+                <button 
+                    *ngFor="let tab of tabs" 
+                    class="tab-button" 
+                    [class.active]="activeTab === tab"
+                    (click)="selectTab(tab)">
+                    {{ tab }}
+                </button>
+            </div>
+        </div>
+
+        <!-- Content based on active tab -->
+        @if (activeTab === 'SAP Commerce') {
+        <app-basesite></app-basesite>
+
+        <p class="ft_heading glass-date-line" *ngIf="dateRange$ | async as range">
+            <span class="date-line-label">Data shown below is from</span>&nbsp;
+            <span class="date-range-chip">
+                <b class="d_f">{{ range.from }}</b>
+                <span class="to-text">to</span>
+                <b class="d_t">{{ range.to }}</b>&nbsp;
+            </span>
+            @if(selected){
+            <span class="website-chip">for the <b class="b_s">{{selected}}</b> Website.</span><br>
+            }
+            <span class="ft_heading info">To change the date range click on 'View Details' buttons on each dashlet.</span>
+        </p>
+        
+        <br>
+        <div class="row col-md-12 col-sm-12 col-lg-12 chartSection">
+            <div class="col-md-6 col-sm-6 homePageCharts">
+                <div data-w-id="e5b429b5-439c-5fd1-b6c6-cc7ec4d25785" style="opacity: 1;" class="module graph-large">
+                    <div class="grid-2-columns _2-col-mbl _1-col-mbp row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="text-300 bold color-neutral-800">Order Summary View</div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 viewDetails">
+                            <a class="btn-primary w-button float-sm-right" (click)="routeTo('order')">View Details</a>
+                        </div>
+                    </div>
+                    <div class="divider top-20px---bottom-52px"></div>
+                    <app-chart [chartName]="orderSummary"></app-chart>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 homePageCharts">
+                <div data-w-id="e5b429b5-439c-5fd1-b6c6-cc7ec4d25785" style="opacity: 1;" class="module graph-large">
+                    <div class="grid-2-columns _2-col-mbl _1-col-mbp row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="text-300 bold color-neutral-800">Cron Job Summary View</div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 viewDetails">
+                            <a class="btn-primary w-button float-sm-right" (click)="routeTo('cronJob')">View Details</a>
+                        </div>
+                    </div>
+                    <div class="divider top-20px---bottom-52px"></div>
+                    <app-chart [chartName]="cronJob"></app-chart>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 homePageCharts">
+                <div data-w-id="e5b429b5-439c-5fd1-b6c6-cc7ec4d25785" style="opacity: 1;" class="module graph-large">
+                    <div class="grid-2-columns _2-col-mbl _1-col-mbp row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="text-300 bold color-neutral-800">Channel Summary View</div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 viewDetails">
+                            <a class="btn-primary w-button float-sm-right" (click)="routeTo('channel')">View Details</a>
+                        </div>
+                    </div>
+                    <div class="divider top-20px---bottom-52px"></div>
+                    <app-chart [chartName]="channel"></app-chart>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 homePageCharts">
+                <div data-w-id="e5b429b5-439c-5fd1-b6c6-cc7ec4d25785" style="opacity: 1;" class="module graph-large">
+                    <div class="grid-2-columns _2-col-mbl _1-col-mbp row">
+                        <div class="col-md-5 col-sm-5">
+                            <div class="text-300 bold color-neutral-800">Ticket Summary View</div>
+                        </div>
+                        <div class="col-md-7 col-sm-7 viewDetails ticket-actions">
+                            <button class="predict-btn" [disabled]="isPredictionLoading" (click)="onPredictTicket()">
+                                <span class="predict-content">
+                                    <span class="predict-star" aria-hidden="true">✨</span>
+                                    {{ isPredictionLoading ? 'Loading...' : 'AI Predict' }}
+                                </span>
+                            </button>
+                            <a class="btn-primary w-button" (click)="routeTo('ticket')">View Details</a>
+                        </div>
+                    </div>
+                    <div class="divider top-20px---bottom-52px"></div>
+                    <app-chart [chartName]="ticket"></app-chart>
+                    <div *ngIf="showPredictionTooltip" class="prediction-tooltip">
+                        <div class="prediction-tooltip-header">
+                            <span class="prediction-title">Ticket Prediction</span>
+                            <button class="close-icon" (click)="closePredictionTooltip()" aria-label="Close prediction popup">×</button>
+                        </div>
+                        <div class="prediction-tooltip-body">
+                            <span class="prediction-popup-sparkle" aria-hidden="true">✨</span>
+                            <div class="prediction-row">
+                                <span class="prediction-label">Prediction Period</span>
+                                <span class="prediction-value highlighted-date">{{ ticketPrediction?.ticketLabel || '-' }}</span>
+                            </div>
+                            <div class="prediction-row">
+                                <span class="prediction-label">Ticket Count</span>
+                                <span class="prediction-value highlighted-count">{{ formatTicketCount(ticketPrediction?.ticketCount) }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 homePageCharts">
+                <div data-w-id="e5b429b5-439c-5fd1-b6c6-cc7ec4d25785" style="opacity: 1;" class="module graph-large">
+                    <div class="grid-2-columns _2-col-mbl _1-col-mbp row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="text-300 bold color-neutral-800">User Activity Summary</div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 viewDetails">
+                            <a class="btn-primary w-button float-sm-right" (click)="routeTo('user')">View Details</a>
+                        </div>
+                    </div>
+                    <div class="divider top-20px---bottom-52px"></div>
+                    <app-chart [chartName]="user"></app-chart>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 homePageCharts">
+                <div data-w-id="e5b429b5-439c-5fd1-b6c6-cc7ec4d25785" style="opacity: 1;" class="module graph-large">
+                    <div class="grid-2-columns _2-col-mbl _1-col-mbp row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="text-300 bold color-neutral-800">User Registration/Closed Summary View</div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 viewDetails">
+                            <a class="btn-primary w-button float-sm-right" (click)="routeTo('userReg')">View Details</a>
+                        </div>
+                    </div>
+                    <div class="divider top-20px---bottom-52px"></div>
+                    <app-chart [chartName]="userReg"></app-chart>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 homePageCharts">
+                <div data-w-id="e5b429b5-439c-5fd1-b6c6-cc7ec4d25785" style="opacity: 1;" class="module graph-large">
+                    <div class="grid-2-columns _2-col-mbl _1-col-mbp row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="text-300 bold color-neutral-800">Interface Status Summary</div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 viewDetails">
+                            <a class="btn-primary w-button float-sm-right" (click)="routeTo('interface')">View Details</a>
+                        </div>
+                    </div>
+                    <div class="divider top-20px---bottom-52px"></div>
+                    <app-chart [chartName]="interface"></app-chart>
+                    <!-- Step 1: Create the containing elements. -->
+                </div>
+            </div>
+        </div>
+        }
+        
+        <!-- Blank content for other tabs -->
+        @if (activeTab !== 'SAP Commerce') {
+        <div class="blank-content">
+            <p class="blank-message">No content available for {{ activeTab }}</p>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,39 @@
+.title {
+  font-size: 23px;
+
+}
+
+.link {
+  color: red;
+  text-decoration: underline;
+
+  &:hover,
+  &:active {
+    color: #9763f6;
+    cursor: pointer;
+  }
+}
+
+.card-text {
+  padding-bottom: 12px;
+  font-size: 18px;
+}
+
+.border-top {
+  border-top: 1px solid black;
+}
+
+.fas {
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.blue {
+  color:rgb(93, 152, 189)
+}
+.maroon{
+  color: maroon;
+}
+.pad-left{
+  padding-left: 20px;
+}

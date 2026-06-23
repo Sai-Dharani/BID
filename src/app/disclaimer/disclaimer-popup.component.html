@@ -1,0 +1,12 @@
+@if (show) {
+  <div class="disclaimer-backdrop">
+    <div class="disclaimer-modal disclaimer-warning" role="dialog" aria-modal="true" aria-labelledby="disclaimerTitle">
+      <p>
+        This platform is intended solely as a <b>demonstration environment</b>. By proceeding,
+        I confirm that I understand any "purchase" or order initiated here is non-binding,
+        will <b>not result in product delivery</b>, and involves <b>no real financial transactions</b>
+      </p>
+      <button class="disclaimer-btn" type="button" class="disclaimer-btn" (click)="acknowledge()">I acknowledge</button>
+    </div>
+  </div>
+}

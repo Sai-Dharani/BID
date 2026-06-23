@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIA: Business Analytics Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        background: #343a40;
+        color: #fff;
+        transition: margin-left 0.3s;
+        position: fixed;
+        height: 100%;
+        z-index: 1000;
+      }
+
+      #sidebar.active {
+        margin-left: -250px;
+      }
+
+      #sidebar .sidebar-header {
+        padding: 20px;
+        background: #343a40;
+		opacity: 0.9;
+        background: linear-gradient(90deg, rgba(52, 54, 68, .75) 0%, rgba(160, 68, 255, .75) 100%);
+      }
+
+      #sidebar ul.components {
+        padding: 20px 0;
+		background-color: #e0d8ff;
+		background: linear-gradient(90deg, rgba(224, 54, 68, .75) 0%, rgba(160, 68, 255, .75) 100%);
+      }
+
+      #sidebar ul p {
+        color: #fff;
+        padding: 10px;
+      }
+
+      #sidebar ul li a {
+        padding: 10px;
+        font-size: 1.1em;
+        display: block;
+        color: #fff;
+      }
+
+      #sidebar ul li a:hover {
+        color: #fff;
+        background: #5F249F;
+		text-decoration: none;
+		font-weight: 600;
+      }
+
+      #content {
+        flex: 1;
+        width: 100%;
+        padding: 20px;
+        margin-left: 0;
+        transition: margin-left 0.3s;
+      }
+
+     
+
+      .hamburger {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        #sidebar {
+          margin-left: -250px;
+        }
+
+        #sidebar.active {
+          margin-left: 0;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        #content.active {
+          margin-left: 0;
+        }
+      }
+
+      .full-width-section {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 20px;
+      }
+
+      .full-width-section .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+      }
+
+      .jumbotron {
+        width: 100%;
+      }
+
+      .footer {
+        background-color: #5F249F;
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+        position: relative;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #5F249F;
+        color: white;
+        padding: 10px 20px;
+      }
+
+      .header .logo img {
+        height: 40px;
+      }
+
+      .header .hamburger {
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .header .navbar-brand {
+        display: flex;
+        align-items: center;
+      }
+
+      .header .navbar-brand img {
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      .jumbotron {
+        color: #FFF;
+        background-color: #F5575A;
+
+        .display-4 {
+          font-weight: 500;
+        }
+
+        .lead,
+        p {
+          color: #fff;
+        }
+      }
+
+      .choose-us-section {
+        background-color: #ffe749;
+        height: 403px;
+        color: white;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 37px;
+        margin-bottom: 2rem;
+      }
+
+      
+      .custom-card {
+        height: 369px;
+        font-size: .7rem;
+        line-height: 1.8;
+      }
+
+      .heading-text {
+        background-color: #3150C2;
+        width: fit-content;
+        padding: 20px;
+        border-radius: 15px;
+        opacity: 0.9;
+		background: linear-gradient(90deg, rgba(106, 48, 197, .75) 0%, rgba(160, 68, 255, .75) 100%);
+      }
+
+      .order-summary {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+      }
+
+      .image-column {
+        flex: 1 1 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image-column img {
+        width: 100%;
+        height: 510px;
+      }
+
+      .circle-column {
+        flex: 1 1 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        position: absolute;
+      }
+
+      .circle:nth-child(1) {
+        background-color: #FF6347;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .circle:nth-child(2) {
+        background-color: #FFD700;
+        top: 100px;
+        left: 25%;
+        transform: translateX(-50%);
+      }
+
+      .circle:nth-child(3) {
+        background-color: #ADFF2F;
+        top: 100px;
+        right: 25%;
+        transform: translateX(50%);
+      }
+
+      .circle:nth-child(4) {
+        background-color: #1E90FF;
+        top: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .circle:nth-child(5) {
+        background-color: #DA70D6;
+        top: 300px;
+        left: 25%;
+        transform: translateX(-50%);
+      }
+
+      .circle:nth-child(6) {
+        background-color: #8A2BE2;
+        top: 300px;
+        right: 25%;
+        transform: translateX(50%);
+      }
+
+      .circle h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .circle p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
+
+        .image-column,
+        .circle-column {
+          flex: 1 1 100%;
+        }
+
+        .circle {
+          width: 150px;
+          height: 150px;
+        }
+
+        .circle:nth-child(1) {
+          top: 0;
+        }
+
+        .circle:nth-child(2),
+        .circle:nth-child(3) {
+          top: 75px;
+        }
+
+        .circle:nth-child(4) {
+          top: 150px;
+        }
+
+        .circle:nth-child(5),
+        .circle:nth-child(6) {
+          top: 225px;
+        }
+      }
+
+      .channel-summary {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+      }
+
+      .image-column {
+        flex: 1 1 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .box-column {
+        flex: 1 1 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .box {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        margin: 10px;
+        border-radius: 10px;
+      }
+
+      .box:nth-child(1) {
+        background-color: #FF6347;
+      }
+
+      .box:nth-child(2) {
+        background-color: #FFD700;
+      }
+
+      .box:nth-child(3) {
+        background-color: #1E90FF;
+      }
+
+      .box h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .box p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .box i {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 768px) {
+
+        .image-column,
+        .box-column {
+          flex: 1 1 100%;
+        }
+
+        .box {
+          width: 100px;
+          height: 100px;
+        }
+
+        .box h3 {
+          font-size: 14px;
+        }
+
+        .box p {
+          font-size: 12px;
+        }
+
+        .box i {
+          font-size: 24px;
+        }
+      }
+
+      .ticket-summary {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+      }
+
+      .image-column {
+        flex: 1 1 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .oval-column {
+        flex: 1 1 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .oval {
+        width: 180px;
+        height: 100px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        position: absolute;
+      }
+
+      .oval:nth-child(1) {
+        background-color: #FF6347;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .oval:nth-child(2) {
+        background-color: #FFD700;
+        top: 80px;
+        left: 25%;
+        transform: translateX(-50%);
+      }
+
+      .oval:nth-child(3) {
+        background-color: #ADFF2F;
+        top: 80px;
+        right: 25%;
+        transform: translateX(50%);
+      }
+
+      .oval:nth-child(4) {
+        background-color: #1E90FF;
+        top: 160px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .oval:nth-child(5) {
+        background-color: #DA70D6;
+        top: 240px;
+        left: 25%;
+        transform: translateX(-50%);
+      }
+
+      .oval:nth-child(6) {
+        background-color: #8A2BE2;
+        top: 240px;
+        right: 25%;
+        transform: translateX(50%);
+      }
+
+      .oval h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .oval p {
+        margin: 0;
+        font-size: 12px;
+      }
+
+      @media (max-width: 768px) {
+
+        .image-column,
+        .oval-column {
+          flex: 1 1 100%;
+        }
+
+        .oval {
+          width: 140px;
+          height: 80px;
+        }
+
+        .oval h3 {
+          font-size: 14px;
+        }
+
+        .oval p {
+          font-size: 10px;
+        }
+
+        .oval:nth-child(1) {
+          top: 0;
+        }
+
+        .oval:nth-child(2),
+        .oval:nth-child(3) {
+          top: 60px;
+        }
+
+        .oval:nth-child(4) {
+          top: 120px;
+        }
+
+        .oval:nth-child(5),
+        .oval:nth-child(6) {
+          top: 180px;
+        }
+      }
+
+      .why-people-choose-us {
+        margin-top: 25px;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        color: #fff;
+		padding: 5px;
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        //background: linear-gradient(90deg, rgba(106, 48, 297, .75) 0%, rgba(160, 8, 255, .75) 100%);
+		//background: linear-gradient(90deg, rgba(240, 74, 0, .75) 0%, rgba(240, 8, 0, .75) 100%);
+      }
+	  
+	  .section-title.order{
+		  background: linear-gradient(90deg, rgba(106, 48, 297, .75) 0%, rgba(160, 8, 255, .75) 100%);
+		}
+		.section-title.channel{
+		  background: linear-gradient(90deg, rgba(240, 74, 0, .75) 0%, rgba(240, 8, 0, .75) 100%);
+		}
+		.section-title.ticket{
+		  background: linear-gradient(90deg, rgba(173, 255, 47, .75) 0%, rgba(173, 255, 0, .75) 100%);
+		}
+
+      .channel-summary {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image-column {
+        flex: 1 1 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image-column img {
+        width: 100%;
+        max-width: max-content;
+      }
+
+      .box-column {
+        flex: 1 1 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 300px;
+      }
+
+      .box {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background-color: #4e73df;
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 1rem;
+      }
+
+      .box i {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .box:nth-child(1) {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .box:nth-child(2) {
+        top: 80px;
+        left: 25%;
+        transform: translateX(-50%);
+      }
+
+      .box:nth-child(3) {
+        top: 80px;
+        right: 25%;
+        transform: translateX(50%);
+      }
+	  .text-muted{
+	    color: #fff !important;
+	  }
+	   #sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #343a40;
+	 background: linear-gradient(90deg, rgba(52, 54, 68, .75) 0%, rgba(160, 68, 255, .75) 100%);
+    color: #fff;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+  }
+  
+  #sidebar.active {
+    transform: translateX(-250px);
+  }
+  
+  #closeSidebar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  
+  #closeSidebar:hover {
+    color: #ddd;
+  }
+  .banner-images{
+    .banner-images {
+            padding: 20px;
+        }
+        .banner {
+            width: 100%;
+            height: auto;
+        }
+        .feature-text h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .status-text {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .status-text img {
+            width: 30px; /* Adjust size as needed */
+            height: auto;
+            margin-right: 10px;
+        }
+		.status-text label{
+		  font-size: 16px;
+          font-weight: 600;
+		}
+        .checkbox-col {
+            display: flex;
+            flex-direction: column;
+        }
+        .row-custom {
+            display: flex;
+            flex-wrap: wrap;
+        }
+  }
+	  .banner-heading{
+		background-color: #5F249F;
+		color: #fff;
+		padding: 6px;
+		border-radius: 13px;
+	  }
+	  .doughnut img{
+	    width: 45px !important;
+	  }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="navbar-brand">
+	    <img src="assets/images/menu/logo/DXC Logo_White RGB.png" alt="Logo" style="height: 50px;">
+        <img src="https://static.vecteezy.com/system/resources/previews/021/348/775/original/pie-chart-icon-for-your-website-design-logo-app-ui-free-vector.jpg" alt="Logo">
+        <span style="font-weight: 700;">
+          <span>Business Intelligence Dashboard </span>
+      </div>
+      <div class="hamburger" id="sidebarCollapse">
+        <i class="fas fa-bars"></i>
+      </div>
+    </header>
+   <!-- Sidebar -->
+<nav id="sidebar" class="active">
+  <div class="sidebar-header">
+    <div class="text-center">
+      <img src="https://thumbs.dreamstime.com/b/female-user-profile-avatar-woman-character-screen-saver-emotions-website-mobile-app-design-vector-199001739.jpg" alt="User" class="img-fluid rounded-circle mb-2">
+      <h4>Admin User</h4>
+    </div>
+  </div>
+  <ul class="list-unstyled components">
+    <li>
+      <a href="#">Dashboard</a>
+    </li>
+    <li>
+      <a href="#">Reports</a>
+    </li>
+    <li>
+      <a href="#">SignIn / Register</a>
+    </li>
+  </ul>
+</nav>
+    <!-- Welcome Section -->
+    <div class="jumbotron" style="background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240705/pngtree-a-vibrant-graphic-displaying-various-graphs-and-charts-providing-visual-representation-image_15913246.jpg'); height: 369px; background-size: cover; background-position: center;">
+      <div class="heading-text">
+        <h1 class="display-4">Welcome to BIA Dashboard!</h1>
+        <p>Analyze your data with ease using our comprehensive dashboard.</p>
+        <hr class="my-4">
+        <p class="lead">View order summaries, channel statistics, ticket statuses, and more.</p>
+      </div>
+    </div>
+    <!-- Content -->
+    <div id="content">
+      <!-- Main Content -->
+      <div class="container mt-3">
+        <!-- Order Summary -->
+       <section class="container my-4 banner-images">
+        <div class="row">
+            <div class="col-md-6 sale">
+                <img src="https://gotrellis.com/wp-content/uploads/2024/04/Amazon-Order-Management-1.jpg" class="img-fluid banner" alt="Banner 2">
+            </div>
+            <div class="col-md-6">
+                <div class="feature-text">
+                    <h1><span class="banner-heading">Order Summary</span></h1>
+                    <p><b>Order Summary</b> is essential for both customer service and business operations, as it helps track the progress of orders, manage inventory, and analyze sales performance.</p>
+                    
+                    <div class="row row-custom">
+                        <div class="col-md-6 checkbox-col">
+                            <div class="status-text">
+                                <img src="https://media.lordicon.com/icons/wired/lineal/152-bar-chart-arrow.gif" alt="Checkbox">
+                                <label>Completed</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://media.lordicon.com/icons/wired/lineal/152-bar-chart-arrow.gif" alt="Checkbox">
+                                <label>Cancelled</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://media.lordicon.com/icons/wired/lineal/152-bar-chart-arrow.gif" alt="Checkbox">
+                                <label>Stuck</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 checkbox-col">
+                            <div class="status-text">
+                                <img src="https://media.lordicon.com/icons/wired/lineal/152-bar-chart-arrow.gif" alt="Checkbox">
+                                <label>Processing</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://media.lordicon.com/icons/wired/lineal/152-bar-chart-arrow.gif" alt="Checkbox">
+                                <label>Pending</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://media.lordicon.com/icons/wired/lineal/152-bar-chart-arrow.gif" alt="Checkbox">
+                                <label>Failed</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Channel Summary -->
+         <section class="container my-4 banner-images">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-text">
+                    <h1><span class="banner-heading">Channel Summary</span></h1>
+                    <p><b>Channel Summary</b> Provides insights into customer interactions across various devices, including desktop, tablet, and mobile. It helps identify which channels are most effective for driving traffic and sales.</p>
+                    
+                    <div class="row row-custom">
+                        <div class="col-md-6 checkbox-col">
+                            <div class="status-text">
+                                <img src="https://media.lordicon.com/icons/wired/flat/159-pie-chart-multi.gif" alt="Checkbox">
+                                <label>Desktop</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://media.lordicon.com/icons/wired/flat/159-pie-chart-multi.gif" alt="Checkbox">
+                                <label>Tablet</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://media.lordicon.com/icons/wired/flat/159-pie-chart-multi.gif" alt="Checkbox">
+                                <label>Mobile</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-md-6 sale">
+                <img src="https://www.shutterstock.com/image-vector/people-using-gadgets-set-business-600nw-2298452401.jpg" class="img-fluid banner" alt="Banner 2">
+            </div>
+        </div>
+    </section>
+        <!-- Ticket Summary -->
+       <section class="container my-4 banner-images">
+        <div class="row">
+            <div class="col-md-6 sale">
+                <img src="https://www.edesk.com/wp-content/uploads/2021/06/ecommerc-customer-support-tickets.png" class="img-fluid banner" alt="Banner 2">
+            </div>
+            <div class="col-md-6">
+                <div class="feature-text">
+                    <h1><span class="banner-heading">Ticket Summary</span></h1>
+                    <p><b>Ticket Summary</b> Provides a breakdown of ticket statuses including opened, closed, pending, resolved, and escalated. Additionally, it tracks the number of scheduled cron jobs and their current status.</p>
+                    
+                    <div class="row row-custom doughnut">
+                        <div class="col-md-6 checkbox-col">
+                            <div class="status-text">
+                                <img src="https://user-images.githubusercontent.com/22045163/127536703-c31300ef-23e4-4831-8191-1600c40012db.gif" alt="Checkbox">
+                                <label>Opened Tickets</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://user-images.githubusercontent.com/22045163/127536703-c31300ef-23e4-4831-8191-1600c40012db.gif" alt="Checkbox">
+                                <label>Closed Tickets</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://user-images.githubusercontent.com/22045163/127536703-c31300ef-23e4-4831-8191-1600c40012db.gif" alt="Checkbox">
+                                <label>Pending Tickets</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 checkbox-col">
+                            <div class="status-text">
+                                <img src="https://user-images.githubusercontent.com/22045163/127536703-c31300ef-23e4-4831-8191-1600c40012db.gif" alt="Checkbox">
+                                <label>Resolved Tickets</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://user-images.githubusercontent.com/22045163/127536703-c31300ef-23e4-4831-8191-1600c40012db.gif" alt="Checkbox">
+                                <label>Escalated Tickets</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://user-images.githubusercontent.com/22045163/127536703-c31300ef-23e4-4831-8191-1600c40012db.gif" alt="Checkbox">
+                                <label>In Progress</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+		 <!-- CronJob Summary View-->
+         <section class="container my-4 banner-images">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-text">
+                    <h1><span class="banner-heading">Cron Job Summary</span></h1>
+                    <p><b>Cron Job Summary</b> is a scheduled task that runs automatically at specified intervals on Unix-like operating systems. It's commonly used for automating repetitive tasks like data backups, script executions, or system maintenance. Cron jobs are defined in a configuration file called a crontab, which specifies the schedule and the command to be executed.</p>
+                    
+                    <div class="row row-custom">
+                        <div class="col-md-6 checkbox-col">
+                            <div class="status-text">
+                                <img src="https://codaio.imgix.net/docs/xcR_nfpmi9/blobs/bl-j2g9Xvqf2y/e840ab0f92f996c1d6ad82993167fb57c48c892ce2eea3c3eadc334d67726020f1b61d0338517252afdb5abebfbfe268f0afb9725383920c61cada9f577bb22bb8844a2ca550f083ded64317a2eb77535b2b2953cddfe8e6a98d2ad7ecaddeaeb3367b46?fit=crop&ar=1.91%3A1&fm=jpg" alt="Checkbox" style="height:30px;">
+                                <label>Active/Running</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://codaio.imgix.net/docs/xcR_nfpmi9/blobs/bl-j2g9Xvqf2y/e840ab0f92f996c1d6ad82993167fb57c48c892ce2eea3c3eadc334d67726020f1b61d0338517252afdb5abebfbfe268f0afb9725383920c61cada9f577bb22bb8844a2ca550f083ded64317a2eb77535b2b2953cddfe8e6a98d2ad7ecaddeaeb3367b46?fit=crop&ar=1.91%3A1&fm=jpg" alt="Checkbox" style="height:30px;">
+                                <label>Scheduled</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://codaio.imgix.net/docs/xcR_nfpmi9/blobs/bl-j2g9Xvqf2y/e840ab0f92f996c1d6ad82993167fb57c48c892ce2eea3c3eadc334d67726020f1b61d0338517252afdb5abebfbfe268f0afb9725383920c61cada9f577bb22bb8844a2ca550f083ded64317a2eb77535b2b2953cddfe8e6a98d2ad7ecaddeaeb3367b46?fit=crop&ar=1.91%3A1&fm=jpg" alt="Checkbox" style="height:30px;">
+                                <label>Failed/Error</label>
+                            </div>
+						</div>
+						<div class="col-md-6 checkbox-col">
+							 <div class="status-text">
+                                <img src="https://codaio.imgix.net/docs/xcR_nfpmi9/blobs/bl-j2g9Xvqf2y/e840ab0f92f996c1d6ad82993167fb57c48c892ce2eea3c3eadc334d67726020f1b61d0338517252afdb5abebfbfe268f0afb9725383920c61cada9f577bb22bb8844a2ca550f083ded64317a2eb77535b2b2953cddfe8e6a98d2ad7ecaddeaeb3367b46?fit=crop&ar=1.91%3A1&fm=jpg" alt="Checkbox" style="height:30px;">
+                                <label>Disabled/Stopped</label>
+                            </div>
+							<div class="status-text">
+                                <img src="https://codaio.imgix.net/docs/xcR_nfpmi9/blobs/bl-j2g9Xvqf2y/e840ab0f92f996c1d6ad82993167fb57c48c892ce2eea3c3eadc334d67726020f1b61d0338517252afdb5abebfbfe268f0afb9725383920c61cada9f577bb22bb8844a2ca550f083ded64317a2eb77535b2b2953cddfe8e6a98d2ad7ecaddeaeb3367b46?fit=crop&ar=1.91%3A1&fm=jpg" alt="Checkbox" style="height:30px;">
+                                <label>Completed</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-md-6 sale">
+                <img src="https://uploads.sitepoint.com/wp-content/uploads/2022/05/1652322344cron-scaled.jpg" class="img-fluid banner" alt="Banner 2">
+            </div>
+        </div>
+    </section>
+	 <!-- User Activity Summary -->
+       <section class="container my-4 banner-images">
+        <div class="row">
+            <div class="col-md-6 sale">
+                <img src="https://img.freepik.com/premium-vector/illustration-vector-graphic-cartoon-character-company-activity-report_516790-1823.jpg" class="img-fluid banner" alt="Banner 2" style="height:276px;">
+            </div>
+            <div class="col-md-6">
+                <div class="feature-text">
+                    <h1><span class="banner-heading">User Activity Summary</span></h1>
+                    <p><b>User Activity</b> is key to analyzing customer engagement and retention. User activity can generally be categorized into active and inactive users.</p>
+                    
+                    <div class="row row-custom doughnut">
+                        <div class="col-md-6 checkbox-col">
+                            <div class="status-text">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Animated_colorful_pie_chart_small_slice.gif" alt="Checkbox" style="width: 30px !important;">
+                                <label>Active</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Animated_colorful_pie_chart_small_slice.gif" alt="Checkbox" style="width: 30px !important;">
+                                <label>Inactive</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	 <!-- User Registered/Closed Summary View-->
+         <section class="container my-4 banner-images">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-text">
+                    <h1><span class="banner-heading">User Registration / Closed  Summary</span></h1>
+                    <p><b>User Registration / Closed</b>tracking user registrations and account closures is essential for understanding customer lifecycle and platform growth.</p>
+                    
+                    <div class="row row-custom">
+                        <div class="col-md-6 checkbox-col">
+                            <div class="status-text">
+                                <img src="https://cdn.dribbble.com/users/37746/screenshots/1566922/graph1.gif" alt="Checkbox">
+                                <label>Registered User</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://cdn.dribbble.com/users/37746/screenshots/1566922/graph1.gif" alt="Checkbox">
+                                <label>Closed User</label>
+                            </div>
+						</div>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-md-6 sale">
+                <img src="https://www.shutterstock.com/image-vector/registration-abstract-concept-vector-illustration-600nw-1856790145.jpg" class="img-fluid banner" alt="Banner 2" style="height:276px;">
+            </div>
+        </div>
+    </section>
+		<!-- API status code Summary -->
+       <section class="container my-4 banner-images">
+        <div class="row">
+            <div class="col-md-6 sale">
+                <img src="https://www.neting.it/wp-content/uploads/2020/07/codici-di-stato-http-errori.jpg" class="img-fluid banner" alt="Banner 2" style="height:276px;">
+            </div>
+            <div class="col-md-6">
+                <div class="feature-text">
+                    <h1><span class="banner-heading">API Status Summary</span></h1>
+                    <p><b>API status codes</b>, also known as return codes, are numerical responses that indicate the outcome of a client’s request to a server. They help developers understand whether an API request was successful, encountered an error, or requires further action.</p>
+                    
+                    <div class="row row-custom doughnut">
+                        <div class="col-md-6 checkbox-col">
+                            <div class="status-text">
+                                <img src="https://cdn.svgator.com/images/2024/04/detective-animation-404-error-page.gif" alt="Checkbox">
+                                <label>200 OK</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://cdn.svgator.com/images/2024/04/detective-animation-404-error-page.gif" alt="Checkbox">
+                                <label>201 Created</label>
+                            </div>
+							 <div class="status-text">
+                                <img src="https://cdn.svgator.com/images/2024/04/detective-animation-404-error-page.gif" alt="Checkbox">
+                                <label>201 Created</label>
+                            </div>
+                        </div>
+						 <div class="col-md-6 checkbox-col">
+                            <div class="status-text">
+                                <img src="https://cdn.svgator.com/images/2024/04/detective-animation-404-error-page.gif" alt="Checkbox">
+                                <label>400 Bad Request</label>
+                            </div>
+                            <div class="status-text">
+                                <img src="https://cdn.svgator.com/images/2024/04/detective-animation-404-error-page.gif" alt="Checkbox">
+                                <label>404 Not Found</label>
+                            </div>
+							 <div class="status-text">
+                                <img src="https://cdn.svgator.com/images/2024/04/detective-animation-404-error-page.gif" alt="Checkbox">
+                                <label>500 Internal Server Error</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer mt-auto">
+      <div class="container">
+        <span class="text-muted">© 2024 BIA Dashboard. All rights reserved.</span>
+      </div>
+    </footer>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#sidebarCollapse').on('click', function() {
+          $('#sidebar').toggleClass('active');
+          $('#content').toggleClass('active');
+        });
+      });
+    </script>
+  </body>
+</html>

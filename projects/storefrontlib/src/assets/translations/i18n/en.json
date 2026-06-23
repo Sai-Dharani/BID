@@ -1,0 +1,52 @@
+{
+    "HOME": {
+        "title": "SAP ICX - Angular Reusable Components",
+        "login":"Login",
+        "Username": "Username",
+        "vailduser": "Username is required",
+        "validpassword": "Password is required",
+        "Password": "Password",
+        "back": "Back",
+        "logout": "Logout",
+        "hi": "Hi"
+    },
+    "REGISTER":{
+        "title": "Registration Form",
+        "sub-title1": "JSON",
+        "First Name": "First Name",
+        "Last Name" : "Last Name",
+        "Date of Birth" : "Date of Birth",
+        "Email" : "Email",
+        "Password" : "Password",
+        "SignUp" : "Sign Up",
+        "Reset" : "Reset",
+        "Action" : "Action"
+     },
+     "MODAL":{
+        "title": "Angular Modal Component",
+        "Confirmationmodal": "Confirmation Modal",
+        "Alertmodal": "Alert Modal",
+        "Formmodal": "Form Modal",
+        "Infomodal": "Info Modal",
+        "Warningmodal": "Warning Modal"
+ 
+     },
+     "CONTACT":{
+        "title": "Angular Contact Component",
+        "Fullname": "Fullname",
+        "Username" : "Username",
+        "Email" : "E-mail",
+        "Message": "Message",
+        "Terms": "I have read and agree to the Terms",
+        "Reset" : "Reset",
+        "Submit" : "Submit"
+ 
+     },
+     "TABLE":{
+        "title": "Angular Table Component",
+        "Id":"ID",
+        "Table-title": "Title",
+        "Body": "Body"
+ 
+     }
+}

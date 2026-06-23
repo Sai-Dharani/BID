@@ -1,0 +1,21 @@
+cx-global-message .alert-danger{
+    .close{
+        right: 0;
+        position: relative;
+    }
+}
+.orbeon .fr-grid label.checkbox:before{
+    display: none;
+}
+.orbeon .fr-grid label.checkbox input[type=checkbox]{
+    visibility: visible;
+    left: 10px;
+    width: 25px;
+    margin-top: 0px;
+}
+main cx-page-layout.AccountPageTemplate cx-page-slot {
+    padding-top: 0px;
+}
+main {
+    padding-top: 80px;
+}

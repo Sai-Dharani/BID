@@ -1,0 +1,25 @@
+<div class="dashboard-main-content">
+  <div class="container p-3 mb-0">
+    <div class="sap-commerce-header">
+      <h2 class="sap-commerce-title">{{ activeTabName }}</h2>
+    </div>
+    <span [ngClass]="currentDashlet=='order'?'active':''" (click)="setDashlet('order')"
+      class="heading-h4-size mg-bottom-8px">Order
+    </span>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <span [ngClass]="currentDashlet=='ticket'?'active':''" (click)="setDashlet('ticket')"
+      class="heading-h4-size mg-bottom-8px">Ticket
+    </span>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <span [ngClass]="currentDashlet=='channel'?'active':''" (click)="setDashlet('channel')"
+      class="heading-h4-size mg-bottom-8px">Channel
+    </span>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <span [ngClass]="currentDashlet=='user'?'active':''" (click)="setDashlet('user')"
+      class="heading-h4-size mg-bottom-8px">User Activity
+    </span>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <span [ngClass]="currentDashlet=='dashlet'?'active':''" (click)="setDashlet('dashlet')"
+      class="heading-h4-size mg-bottom-8px">User Registration/Closed
+    </span>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <span [ngClass]="currentDashlet=='cronJob'?'active':''" (click)="setDashlet('cronJob')"
+      class="heading-h4-size mg-bottom-8px">Cron Job
+    </span>
+  </div>
+</div>

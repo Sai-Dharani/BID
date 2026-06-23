@@ -1,0 +1,44 @@
+@if (dateRange > 0 && (activeData || inActiveData)) {
+  <div class="total-header">
+    <h4 class="total-title">Total Users: <span class="total-count-value">{{(activeData || 0) + (inActiveData || 0)}}</span></h4>
+  </div>
+}
+<div class="reports-top-details-container">
+  <div class="c_tab col-md-2 col-sm-2">
+      <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='active'"
+        data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+        class="module reports-top-details activeUsers" (click)="onTabSelection('active', activeData)"
+        [attr.disabled]="(activeData > 0 && dateRange > 0) ? null : true">
+        <img src="assets/icons/orderStuck.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+          class="reports-top-details-icon">
+          <div>
+            <div class="text-200 medium">Active</div>
+            <div class="flex align-end">
+              @if (dateRange > 0) {
+                <div class="stuck display-4 mg-right-6px">
+                  {{activeData}}
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+  <div class="c_tab col-md-2 col-sm-2">
+        <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='inActive'"
+          data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+          class="module reports-top-details InactiveUsers" (click)="onTabSelection('inActive',inActiveData)"
+          [attr.disabled]="(inActiveData > 0 && dateRange > 0) ? null : true">
+          <img src="assets/icons/orderFailure.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+            class="reports-top-details-icon">
+            <div>
+              <div class="text-200 medium">Inactive</div>
+              <div class="flex align-end">
+                @if (dateRange > 0) {
+                  <div class="_progress display-4 mg-right-6px">
+                  {{inActiveData}}</div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+</div>

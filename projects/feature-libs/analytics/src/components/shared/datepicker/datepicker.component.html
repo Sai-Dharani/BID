@@ -1,0 +1,33 @@
+<!--  -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<form class="row row-cols-sm-auto">
+				<div class="col-md-3">
+					<label>From Date</label>
+					<div class="input-group">
+						<input class="form-control" placeholder="yyyy/mm/dd" name="d2"
+							[maxDate]="{year: year, month: month, day: day}" [(ngModel)]="model1"
+							(dateSelect)="onDateSelection($event)"
+							ngbDatepicker #d2="ngbDatepicker" (input)="getDate()" [readonly]="true"/>
+						<button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()"
+							type="button"></button>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<label>To Date</label>
+					<div class="input-group">
+						<input class="form-control" placeholder="yyyy/mm/dd" name="d3" [(ngModel)]="model2"
+						[minDate]="{year: fromYear, month: fromMonth, day: fromDay}"
+                        [maxDate]="{year: toYear, month: toMonth, day: toDay}" 
+						ngbDatepicker #d3="ngbDatepicker" (input)="getDate()" [readonly]="true"/>
+						<button class="btn btn-outline-secondary bi bi-calendar3" (click)="d3.toggle()"
+							type="button"></button>
+					</div>
+				</div>
+					<a class="filter-button" (click)="filterDate()">Filter</a>
+					<a class="reset-button" (click)="resetDate()">Reset</a>
+			</form>
+		</div>
+	</div>
+</div><br>

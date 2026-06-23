@@ -1,0 +1,106 @@
+
+$storeUid = electronics
+ $siteUid = electronics
+ $defaultPassword = 123
+
+
+INSERT_UPDATE OrderCancelConfig; orderCancelAllowed; cancelAfterWarehouseAllowed; completeCancelAfterShippingStartedAllowed; partialCancelAllowed; partialOrderEntryCancelAllowed; queuedOrderWaitingTime;
+     ; true              ; true                       ; true           ; true                ; true                          ; 100;
+
+INSERT_UPDATE UserGroup; uid[unique=true]
+                       ; ticketOccTestGroup
+                       ; customergroup
+                       ; customermanagergroup
+
+
+
+INSERT_UPDATE CsAgentGroup;uid[unique=true]    ; ticketstores(uid); defaultAssignee(uid)
+                          ;csagentmanagergroup ;                  ;
+
+INSERT_UPDATE Domain;code[unique=true];name;
+                    ;ticketSystemDomain;Ticket System Domain;
+
+INSERT_UPDATE Component;code[unique=true];name;domain[unique=true](code);readPermitted(uid);writePermitted(uid);createPermitted(uid);removePermitted(uid);
+                       ;ticketSystem;Ticket System;ticketSystemDomain;ticketOccTestGroup;ticketOccTestGroup;ticketOccTestGroup;ticketOccTestGroup;
+
+INSERT_UPDATE CommentType;code[unique=true];name;domain[unique=true](code);metaType(code)
+                         ;agentNote;Agent Note;ticketSystemDomain;CsCustomerEvent
+                         ;customerNote;Customer Note;ticketSystemDomain;CsCustomerEvent
+                         ;customerEmail;Customer Email;ticketSystemDomain;CsCustomerEvent
+                         ;ticketCreationEvent;Ticket Created Event;ticketSystemDomain;CsCustomerEvent
+                         ;ticketAssignedEvent;Ticket Assigned Event;ticketSystemDomain;CsTicketEvent
+                         ;ticketResolutionEvent;Ticket Resolved Event;ticketSystemDomain;CsTicketResolutionEvent
+                         ;ticketUnResolutionEvent;Ticket UnResolved Event;ticketSystemDomain;CsCustomerEvent
+                         ;ticketChangeEvent;Ticket Changed Event;ticketSystemDomain;CsTicketEvent
+
+INSERT_UPDATE CsTicket  ;state(code); ticketID[unique=true] ; &ticketRef   ; customer(uid)  ; order(code); category(code) ; priority(code) ; headline            ;resolution(code)                     ; baseSite(uid); creationtime[dateformat = dd.MM.yyyy HH:mm];
+                      	;	Closed	;	 ticket1  	;	 ticket1 	;	 test3@bia.com  	;	00003041	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 02.01.2023 07:147
+                      	;	Open	;	 ticket2  	;	 ticket2 	;	 test1@bia.com  	;	00003042	;	 Enquiry        	;	 High           	;	 Test Headline 1  	            ;	           	;	 $siteUid     	;	 04.04.2023 07:147
+                      	;	Closed	;	 ticket70  	;	 ticket70 	;	 test1@bia.com  	;	00003042	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 10.04.2023 07:147
+                      	;	Closed	;	 ticket3	;	 ticket3	;	 test2@bia.com  	;	00003043	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 07.04.2023 07:147
+                      	;	Closed	;	 ticket4	;	 ticket4	;	 test1@bia.com  	;	00003044	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 07.05.2023 07:147
+                      	;	Closed	;	 ticket5	;	 ticket5	;	 test3@bia.com  	;	00003045	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 08.05.2023 07:147
+                      	;	Closed	;	 ticket6	;	 ticket6	;	 test1@bia.com  	;	00003046	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 09.05.2023 07:147
+                      	;	Closed	;	 ticket7	;	 ticket7	;	 test2@bia.com  	;	00003047	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 10.05.2023 07:147
+                      	;	Closed	;	 ticket8	;	 ticket8	;	 test1@bia.com  	;	00003048	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 09.06.2023 07:147
+                      	;	Closed	;	 ticket9	;	 ticket9	;	 test3@bia.com  	;	00003049	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 12.06.2023 07:147
+                      	;	Closed	;	 ticket10	;	 ticket10	;	 test1@bia.com  	;	00003050	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 15.06.2023 07:147
+                      	;	Closed	;	 ticket11	;	 ticket11	;	 test2@bia.com  	;	00003051	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 16.06.2023 07:147
+                      	;	Closed	;	 ticket12	;	 ticket12	;	 test1@bia.com  	;	00003052	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 16.06.2023 07:147
+                      	;	Closed	;	 ticket13	;	 ticket13	;	 test3@bia.com  	;	00003053	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 27.07.2023 07:147
+                      	;	Closed	;	 ticket14	;	 ticket14	;	 test1@bia.com  	;	00003054	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 01.07.2023 07:147
+                      	;	Closed	;	 ticket15	;	 ticket15	;	 test2@bia.com  	;	00003055	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 05.07.2023 07:147
+                      	;	Closed	;	 ticket16	;	 ticket16	;	 test1@bia.com  	;	00003056	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 06.07.2023 07:148
+                      	;	Closed	;	 ticket17	;	 ticket17	;	 test3@bia.com  	;	00003057	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 07.07.2023 07:149
+                      	;	Closed	;	 ticket18	;	 ticket18	;	 test1@bia.com  	;	00003058	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 07.07.2023 07:150
+                      	;	Closed	;	 ticket19	;	 ticket19	;	 test2@bia.com  	;	00003059	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 08.07.2023 07:151
+                      	;	Closed	;	 ticket20	;	 ticket20	;	 test1@bia.com  	;	00003060	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 09.07.2023 07:152
+                      	;	Closed	;	 ticket21	;	 ticket21	;	 test3@bia.com  	;	00003061	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 12.07.2023 07:153
+                      	;	Closed	;	 ticket22	;	 ticket22	;	 test1@bia.com  	;	00003062	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 17.07.2023 07:154
+                      	;	Closed	;	 ticket23	;	 ticket23	;	 test2@bia.com  	;	00003063	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 18.07.2023 07:155
+                      	;	Closed	;	 ticket24	;	 ticket24	;	 test1@bia.com  	;	00003064	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 21.07.2023 07:156
+                      	;	Closed	;	 ticket25	;	 ticket25	;	 test3@bia.com  	;	00003065	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 22.07.2023 07:157
+                      	;	Closed	;	 ticket26	;	 ticket26	;	 test1@bia.com  	;	00003066	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 24.07.2023 07:158
+                      	;	Closed	;	 ticket27	;	 ticket27	;	 test2@bia.com  	;	00003067	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 26.07.2023 07:159
+                      	;	Closed	;	 ticket28	;	 ticket28	;	 test1@bia.com  	;	00003068	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 28.02.2023 07:160
+                      	;	Closed	;	 ticket29	;	 ticket29	;	 test3@bia.com  	;	00003069	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 01.03.2023 07:161
+                      	;	Closed	;	 ticket30	;	 ticket30	;	 test1@bia.com  	;	00003070	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 02.03.2023 07:162
+                      	;	Closed	;	 ticket31	;	 ticket31	;	 test2@bia.com  	;	00003071	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 02.03.2023 07:163
+                      	;	Closed	;	 ticket32	;	 ticket32	;	 test1@bia.com  	;	00003072	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 03.03.2023 07:164
+                      	;	Closed	;	 ticket33	;	 ticket33	;	 test3@bia.com  	;	00003073	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 03.03.2023 07:165
+                      	;	Closed	;	 ticket34	;	 ticket34	;	 test1@bia.com  	;	00003074	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 04.03.2023 07:166
+                      	;	Closed	;	 ticket35	;	 ticket35	;	 test2@bia.com  	;	00003075	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 05.03.2023 07:167
+                      	;	Closed	;	 ticket36	;	 ticket36	;	 test1@bia.com  	;	00003076	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 05.03.2023 07:168
+                      	;	Closed	;	 ticket37	;	 ticket37	;	 test3@bia.com  	;	00003077	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 05.03.2023 07:169
+                      	;	Closed	;	 ticket38	;	 ticket38	;	 test1@bia.com  	;	00003078	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 05.03.2023 07:170
+                      	;	Closed	;	 ticket39	;	 ticket39	;	 test2@bia.com  	;	00003079	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 06.03.2023 07:171
+                      	;	Closed	;	 ticket40	;	 ticket40	;	 test1@bia.com  	;	00003080	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 07.03.2023 07:172
+                      	;	Closed	;	 ticket41	;	 ticket41	;	 test3@bia.com  	;	00003081	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 08.03.2023 07:173
+                      	;	Closed	;	 ticket42	;	 ticket42	;	 test1@bia.com  	;	00003082	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 09.03.2023 07:174
+                      	;	Closed	;	 ticket43	;	 ticket43	;	 test2@bia.com  	;	00003083	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 11.03.2023 07:175
+                      	;	Closed	;	 ticket44	;	 ticket44	;	 test1@bia.com  	;	00003084	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 12.03.2023 07:176
+                      	;	Closed	;	 ticket45	;	 ticket45	;	 test3@bia.com  	;	00003085	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 17.03.2023 07:177
+                      	;	Closed	;	 ticket46	;	 ticket46	;	 test1@bia.com  	;	00003086	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 18.03.2023 07:178
+                      	;	Closed	;	 ticket47	;	 ticket47	;	 test2@bia.com  	;	00003087	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 18.03.2023 07:179
+                      	;	Closed	;	 ticket48	;	 ticket48	;	 test1@bia.com  	;	00003088	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 19.03.2023 07:147
+                      	;	Closed	;	 ticket49	;	 ticket49	;	 test3@bia.com  	;	00003089	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 20.03.2023 07:147
+                      	;	Closed	;	 ticket50	;	 ticket50	;	 test1@bia.com  	;	00003090	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 21.03.2023 07:147
+                      	;	Closed	;	 ticket51	;	 ticket51	;	 test2@bia.com  	;	00003091	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 22.03.2023 07:147
+                      	;	Closed	;	 ticket52	;	 ticket52	;	 test1@bia.com  	;	00003092	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 22.03.2023 07:147
+                      	;	Closed	;	 ticket53	;	 ticket53	;	 test3@bia.com  	;	00003093	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;	           	;	 $siteUid     	;	 23.03.2023 07:147
+                      	;	Closed	;	 ticket54	;	 ticket54	;	 test1@bia.com  	;	00003094	;	 Problem        	;	 High           	;	 Test Problem for customer  	;	           	;	 $siteUid     	;	 23.03.2023 07:147
+                      	;	Closed	;	 ticket55	;	 ticket55	;	 test2@bia.com  	;	00003095	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;	           	;	 $siteUid     	;	 24.03.2023 07:147
+                      	;	Closed	;	 ticket56	;	 ticket56	;	 test1@bia.com  	;	00003096	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 26.03.2023 07:147
+                      	;	Closed	;	 ticket57	;	 ticket57	;	 test3@bia.com  	;	00003097	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;		        ;	 $siteUid     	;	 26.03.2023 07:147
+                      	;	Closed	;	 ticket58	;	 ticket58	;	 test1@bia.com  	;	00003098	;	 Problem        	;	 High           	;	 Test Problem for customer  	;		        ;	 $siteUid     	;	 26.03.2023 07:147
+                      	;	Closed	;	 ticket59	;	 ticket59	;	 test2@bia.com  	;	00003099	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;		        ;	 $siteUid     	;	 07.07.2023 07:147
+                      	;	Open	;	 ticket60	;	 ticket60	;	 test1@bia.com  	;	00003100	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 20.07.2023 07:147
+                      	;	Closed	;	 ticket61	;	 ticket61	;	 test3@bia.com  	;	00003101	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;		        ;	 $siteUid     	;	 24.07.2023 07:147
+                      	;	Open	;	 ticket62	;	 ticket62	;	 test3@bia.com  	;	00003102	;	 Problem        	;	 High           	;	 Test Problem for customer  	;		        ;	 $siteUid     	;	 25.07.2023 07:147
+                      	;	Closed	;	 ticket63	;	 ticket63	;	 test3@bia.com  	;	00003103	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;		        ;	 $siteUid     	;	 26.07.2023 07:147
+                      	;	New	    ;	 ticket64	;	 ticket64	;	 test1@bia.com  	;	00003104	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 27.07.2023 07:147
+                      	;	Open	;	 ticket65	;	 ticket65	;	 test2@bia.com  	;	00003105	;	 Enquiry        	;	 Low            	;	 Test Headline 1            	;		        ;	 $siteUid     	;	 28.07.2023 07:147
+                      	;	Open	;	 ticket66	;	 ticket66	;	 test1@bia.com  	;	00003106	;	 Problem        	;	 High           	;	 Test Problem for customer  	;		        ;	 $siteUid     	;	 29.07.2023 07:147
+                      	;	Open	;	 ticket67	;	 ticket67	;	 test1@bia.com  	;	00003107	;	 Complaint      	;	 High           	;	 Test Incident for customer 	;		        ;	 $siteUid     	;	 29.07.2023 07:147
+                      	;	New	    ;	 ticket68	;	 ticket68	;	 test1@bia.com  	;	00003108	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 30.07.2023 07:147
+                      	;	New	   ;	 ticket69   ;	 ticket69	;	 test1@bia.com  	;	00003109	;	 Enquiry        	;	 High           	;	 Test Status for customer   	;		        ;	 $siteUid     	;	 31.07.2023 07:147

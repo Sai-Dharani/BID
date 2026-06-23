@@ -1,0 +1,42 @@
+.active{
+  background-color: var(--cx-color-melon);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 44px;
+}
+
+.sap-commerce-header {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--cx-color-melon);
+}
+
+.sap-commerce-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--cx-color-melon);
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dashboard-main-content{
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: var(--cx-color-canvas);
+  .heading-h4-size{
+    cursor: pointer;
+  }
+
+}
+

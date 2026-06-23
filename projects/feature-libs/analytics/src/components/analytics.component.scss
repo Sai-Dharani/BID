@@ -1,0 +1,464 @@
+//@import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
+.dashboard-nav-main-container {
+  background-color: #3072C5;
+  box-shadow: 0 2px 12px 0 rgba(11, 22, 44, 0.05);
+}
+
+.dashboard-nav-footer-container {
+  background-color: #3072C5;
+  box-shadow: 0 2px 12px 0 rgba(11, 22, 44, 0.05);
+}
+
+.container-default {
+  max-width: 1092px;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.dashboard-nav-container {
+  display: flex;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.dashboard-nav-left-content {
+  display: flex;
+  width: 100%;
+  margin-right: 32px;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.dashboard-nav-center-content {
+  width: 100%;
+  -webkit-box-align: center;
+  text-align: center;
+}
+
+.mg-right-24px {
+  margin-right: 24px;
+}
+
+.text-400 {
+  font-size: 22px;
+  line-height: 1.3em;
+  font-weight: bolder;
+}
+
+.text-300 {
+  font-size: 18px;
+  line-height: 1.3em;
+  font-weight: 500;
+}
+
+.color-neutral-800 {
+  color: white;
+}
+
+.bi-person-bounding-box {
+  color: white;
+  height: 27px;
+  width: 27px;
+}
+
+
+body {
+  margin: 0;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  background: #f4f5f6;
+}
+
+.carousel-shell {
+  max-width: 1400px;
+  margin: auto;
+  background: #fff;
+  padding: 20px 50px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.carousel-layout {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  align-items: center;
+  gap: 40px;
+}
+
+.carousel-content {
+  padding-right: 20px;
+
+  .meta {
+    margin: 23px 0;
+  }
+}
+
+
+.carousel-image {
+ position: relative;
+  padding: 12px;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.carousel-image::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+
+  background: linear-gradient(
+    90deg,
+    #004AAC,
+    #00CFFF,
+    #7B2FF7,
+    #FF7A18,
+    #004AAC
+  );
+
+  background-size: 300% 300%;
+  animation: borderMove 6s linear infinite;
+
+  border-radius: 34px;
+  z-index: 0;
+}
+
+.carousel-image::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+
+  border-radius: 30px;
+
+  background: linear-gradient(
+      135deg,
+      rgba(245,249,255,0.95),
+      rgba(225,236,255,0.95)
+  );
+
+  z-index: 1;
+}
+
+.carousel-image img{
+   width:100%;
+  height:auto;
+  display:block;
+  border-radius:24px;
+  position:relative;
+  z-index:2;
+}
+
+@keyframes borderMove{
+  0%{
+      background-position:0% 50%;
+  }
+  100%{
+      background-position:300% 50%;
+  }
+}
+
+
+
+
+
+
+
+
+/* ================= TOP CONTENT ================= */
+.carousel-header {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0px;
+  margin-bottom: 30px;
+}
+
+.title {
+  position: relative;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+
+  .title-glass {
+    position: relative;
+    display: inline-block;
+    max-width: 94%;
+    padding: 13px 35px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.52) 100%);
+    border: 2px solid rgba(209, 70, 0, 0.75);
+    box-shadow: 0 14px 34px rgba(209, 70, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #0E2A47;
+    z-index: 1;
+  }
+
+  .title-chart-accent {
+    position: absolute;
+    top: -12px;
+    left: -14px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffffff 0%, #ecf3ff 40%, #dce9ff 100%);
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 8px 20px rgba(18, 60, 168, 0.28);
+    z-index: 2;
+    overflow: hidden;
+    transition: all 0.35s ease;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    &.pie {
+      background: conic-gradient(from 15deg, #004AAC 0 35%, #7B2FF7 35% 70%, #ff7a18 70% 100%);
+    }
+
+    &.bar {
+      background: radial-gradient(circle at 35% 30%, #f8fbff 0%, #dfeaff 100%);
+
+      &::before {
+        opacity: 1;
+        left: 13px;
+        bottom: 12px;
+        width: 7px;
+        height: 18px;
+        border-radius: 4px;
+        background: #004AAC;
+        box-shadow: 11px -6px 0 #7B2FF7, 22px -12px 0 #ff7a18;
+      }
+    }
+
+    &.line {
+      background:
+        radial-gradient(circle at 16px 39px, #004AAC 0 2.8px, transparent 3px),
+        radial-gradient(circle at 30px 27px, #7B2FF7 0 2.8px, transparent 3px),
+        radial-gradient(circle at 45px 32px, #ff7a18 0 2.8px, transparent 3px),
+        radial-gradient(circle at 30% 30%, #f8fbff 0%, #dfeaff 100%);
+
+      &::before {
+        opacity: 1;
+        left: 14px;
+        top: 20px;
+        width: 30px;
+        height: 22px;
+        border-left: 3px solid #004AAC;
+        border-top: 3px solid #7B2FF7;
+        border-right: 3px solid #ff7a18;
+        border-bottom: 0;
+        border-radius: 0 16px 0 0;
+        transform: rotate(18deg);
+      }
+    }
+
+    &.donut {
+      background: conic-gradient(from 12deg, #004AAC 0 36%, #7B2FF7 36% 76%, #ff7a18 76% 100%);
+
+      &::after {
+        opacity: 1;
+        inset: 14px;
+        border-radius: 50%;
+        background: #fff;
+      }
+    }
+
+    &.area {
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.95) 0%, rgba(220, 234, 255, 0.95) 100%);
+
+      &::before {
+        opacity: 1;
+        left: 9px;
+        right: 9px;
+        bottom: 9px;
+        height: 30px;
+        background: linear-gradient(180deg, rgba(0, 74, 172, 0.2) 0%, rgba(123, 47, 247, 0.58) 100%);
+        clip-path: polygon(0% 100%, 0% 72%, 24% 55%, 48% 63%, 70% 32%, 100% 45%, 100% 100%);
+      }
+
+      &::after {
+        opacity: 1;
+        left: 9px;
+        right: 9px;
+        bottom: 26px;
+        height: 3px;
+        background: linear-gradient(90deg, #004AAC 0%, #ff7a18 100%);
+        clip-path: polygon(0% 64%, 24% 47%, 48% 56%, 70% 26%, 100% 39%, 100% 58%, 0% 79%);
+      }
+    }
+
+    &.scatter {
+      background: radial-gradient(circle at 30% 30%, #f8fbff 0%, #dfeaff 100%);
+
+      &::before {
+        opacity: 1;
+        inset: 0;
+        background:
+          radial-gradient(circle at 14px 46px, #004AAC 0 3.4px, transparent 3.6px),
+          radial-gradient(circle at 22px 33px, #7B2FF7 0 3px, transparent 3.2px),
+          radial-gradient(circle at 33px 39px, #ff7a18 0 3.2px, transparent 3.4px),
+          radial-gradient(circle at 44px 24px, #004AAC 0 3.2px, transparent 3.4px),
+          radial-gradient(circle at 50px 34px, #7B2FF7 0 2.8px, transparent 3px);
+      }
+    }
+
+    &.radar {
+      background:
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.98) 0 18%, rgba(230, 239, 255, 0.98) 18% 37%, rgba(212, 227, 255, 0.98) 37% 55%, rgba(190, 213, 255, 0.95) 55% 100%);
+
+      &::before {
+        opacity: 1;
+        left: 9px;
+        top: 9px;
+        right: 9px;
+        bottom: 9px;
+        background: rgba(123, 47, 247, 0.28);
+        clip-path: polygon(50% 0%, 84% 30%, 73% 76%, 27% 76%, 16% 30%);
+        border: 2px solid rgba(0, 74, 172, 0.55);
+      }
+
+      &::after {
+        opacity: 1;
+        left: 29px;
+        top: 9px;
+        width: 2px;
+        height: 42px;
+        background: rgba(0, 74, 172, 0.55);
+        box-shadow: -17px 21px 0 rgba(123, 47, 247, 0.55), 17px 21px 0 rgba(255, 122, 24, 0.55);
+      }
+    }
+  }
+}
+
+.meta small {
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #D14600;
+}
+
+.meta p {
+  margin: 12px 0 20px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* DXC ARROWS */
+.arrow {
+  border: none;
+  background: #FF7E51;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px 10px;
+  color: #fff;
+  border-radius: 20px;
+
+}
+
+.learn-btn {
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: 1px solid #000;
+  background-color: #0E1020;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ================= IMAGE STACK ================= */
+.image-area {
+  position: relative;
+  height: 275px;
+  border-radius: 24px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.image-area-inner {
+  height: 100%;
+  padding: 20px;
+}
+
+.image-stack {
+  position: relative;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  bottom: 0;
+  width: 82%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(73, 149, 255, 0.35);
+  transition: all 0.35s ease;
+
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+/* STACK POSITIONS (CLEARLY VISIBLE) */
+.slide.active {
+  left: 140px;
+  z-index: 3;
+}
+
+.slide.prev-1 {
+  left: 70px;
+  z-index: 2;
+}
+
+.slide.prev-2 {
+  left: 0px;
+  z-index: 1;
+}
+
+/* ================= IMAGE STACK ================= */
+
+
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .carousel-header {
+    grid-template-columns: 1fr;
+  }
+
+  .image-area {
+    height: 240px;
+  }
+
+  .slide {
+    width: 90%;
+  }
+
+  .slide.active {
+    left: 60px;
+  }
+
+  .slide.prev-1 {
+    left: 30px;
+  }
+
+  .slide.prev-2 {
+    left: 0;
+  }
+}

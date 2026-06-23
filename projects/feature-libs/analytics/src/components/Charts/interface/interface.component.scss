@@ -1,0 +1,49 @@
+.status-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.status-box {
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    margin: 5px;
+    color: #fff;
+}
+.status-green {
+    background-color: #93d569; /* Green */
+}
+.status-red {
+    background-color: #ec635d; /* Red */
+}
+
+.status-pending {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
+.refresh-col,
+.refresh-cell {
+    text-align: center;
+}
+
+.refresh-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: #0b0e2c;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.refresh-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

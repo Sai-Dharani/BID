@@ -1,0 +1,62 @@
+<div class="dashboard-nav-main-container">
+  <div class="container-default w-container">
+    <div class="dashboard-nav-container">
+      <div class="dashboard-nav-left-content">
+        <div class="logo-container mg-right-24px">
+          @if (pageUrl!=='/login') {
+          <a>
+            <img src="/assets/icons/DXC-logo.png" class="logo-img mg-right-24px" alt="DXC logo">
+          </a>
+          } @else {
+          <img src="/assets/icons/DXC-logo.png" alt="DXC logo" class="logo-img mg-right-24px">
+          }
+        </div>
+      </div>
+      <div class="dashboard-nav-center-content">
+        <h1 class="dashboard-title">Business Intelligence Dashboard</h1>
+      </div>
+
+      <div class="dashboard-nav-right-content">
+        <button type="button" class="icon-action" aria-label="Go to home" (click)="routeToHome()">
+          <i class="bi bi-house-fill" aria-hidden="true"></i>
+        </button>
+        @if (user$ | async; as user;) {
+        <i class="bi bi-person-circle user-trend-icon" aria-hidden="true"></i>
+        }
+        @if (user$ | async; as user;) {
+          <span>HI, {{ user.name }}</span>
+          <a class="signOut" (click)="openLogoutPopup()">
+            Sign Out
+          </a>
+        } @else {
+          <a class="signIn" [routerLink]="['/login']">
+            Sign In / Register
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+<cx-storefront></cx-storefront>
+<div class="dashboard-nav-footer-container">
+  <div class="dashboard-nav-container-footer">
+    <div class="footer-disclaimer">
+      <b>Disclaimer:</b> This is a <b>DEMO only portal</b> intended solely for <b>demonstration purposes</b>. 
+     By proceeding, I acknowledge that any <b>bills, appointments, purchases, orders,</b> 
+     or other transactions made here are purely for testing and illustration purposes only. 
+     They are non-binding, <b>will not result in product delivery</b> or confirmed services, and do
+     <b>not involve any real financial transactions</b>.
+    </div>
+
+    <div class="footer-copy">
+      © DXC Technology Company
+    </div>
+
+  </div>
+</div>
+<app-disclaimer-popup></app-disclaimer-popup>
+<app-logout-confirm
+  *ngIf="showLogoutPopup"
+  (close)="closeLogoutPopup()">
+</app-logout-confirm>
+<app-bia-chatbot></app-bia-chatbot>

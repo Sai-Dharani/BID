@@ -1,0 +1,168 @@
+@if (currentDashlet=='order' || currentDashlet=='channel' && orderDetailData) {
+<div>
+  <div class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        @if (currentDashlet=='order') {
+        <h3 class="heading">Order Summary Details</h3>
+        }
+        @if (currentDashlet=='channel') {
+        <h3 class="heading">Channel Summary Details</h3>
+        }
+        <button type="button" class="close" (click)="closeModal();">&times;</button>
+      </div>
+      <div class="modal-body">
+        <table class="order-details"
+          aria-label="{currentDashlet=='order'?'table of Order Summary Details':'table of Channel Summary Details'}">
+          <tbody>
+            <tr>
+              <td scope="row" class="data-label">Order No</td>
+              <td class="order-data link" (click)="gotoOrderSummary(orderId)">{{orderId}}</td>
+            </tr>
+            <tr>
+              <td scope="row" class="data-label">Order Date</td>
+              <td class="order-data">{{orderDate | date:'medium'}}</td>
+            </tr>
+            <tr>
+              <td scope="row" class="data-label">Price</td>
+              <td class="order-data">{{orderPrice}}</td>
+            </tr>
+            <tr>
+              <td scope="row" class="data-label">Status</td>
+              <td class="order-data">{{orderStatus}}</td>
+            </tr>
+            @if (ticketData!=0) {
+            <tr>
+              <td class="data-label">
+                <span>Ticket</span><br>
+                @for (ticketD of ticketData; track ticketD; let i = $index) {
+                @if (i===0) {
+                <a class="link ticketDetailsLink" (click)="gotoTicketDetails(ticketData)">Go to Ticket Details</a>
+                }
+                }
+              </td>
+              <td class="order-data ticket-data">
+                <div id="accordion" class="custom-accordion">
+                  @for (ticketD of ticketData; track ticketD; let i = $index) {
+                  <div class="card">
+                    @if (i < 2) { <div>
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i"
+                          aria-expanded="false" [attr.aria-controls]="'collapse' + i">
+                          {{ ticketD.id }}
+                          <i aria-hidden="true" class="fa fa-chevron-down">&nbsp;</i>
+                        </button>
+                      </h5>
+
+                      <div [attr.id]="'collapse' + i" class="collapse" data-bs-parent="#accordion">
+                        <div class="card-body">
+                          <b>Subject:</b> {{ ticketD.subject }}<br>
+                          <b>Created At:</b> {{ ticketD.createdAt | date:'medium' }}<br>
+                          <b>Modified At:</b> {{ ticketD.modifiedAt | date:'medium' }}<br>
+                          <b>Status:</b> {{ ticketD.status.name }}<br>
+                          <b>Ticket Category:</b> {{ ticketD.ticketCategory.name }}<br>
+                        </div>
+                      </div>
+                  </div>
+                  }
+                </div>
+                }
+      </div>
+
+      </td>
+      </tr>
+      }
+      </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+}
+
+@if (currentDashlet=='ticket' && ticketDetailData) {
+<div class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="heading">Ticket Summary Details</h3>
+      <button type="button" class="close" (click)="closeModal();">&times;</button>
+    </div>
+    <div class="modal-body">
+      <table class="order-details" aria-label="table for Ticket Summary Details">
+        <tbody>
+          <tr>
+            <td scope="row" class="data-label">Ticket Subject</td>
+            <td class="order-data">{{ticketSubject}}</td>
+          </tr>
+          <tr>
+            <td scope="row" class="data-label">ID</td>
+            <td class="order-data">{{ticketId}}</td>
+          </tr>
+          <tr>
+            <td scope="row" class="data-label">CreatedAt</td>
+            <td class="order-data">{{ticketCreatedAt | date:'medium'}}</td>
+          </tr>
+          <tr>
+            <td scope="row" class="data-label">ModifiedAt</td>
+            <td class="order-data">{{ticketModifiedAt | date:'medium'}}</td>
+          </tr>
+          <tr>
+            <td scope="row" class="data-label">Status</td>
+            <td class="order-data">{{ticketStatus}}</td>
+          </tr>
+          <tr>
+            <td scope="row" class="data-label">Category</td>
+            <td class="order-data">{{ticketCategory}}</td>
+          </tr>
+          <tr>
+            <td scope="row" class="data-label">Customer ID</td>
+            <td class="order-data">{{['ticketCustomerId']}}</td>
+          </tr>
+          @if (orderId!=='') {
+          <tr>
+            <td class="data-label">Order ID</td>
+            <td class="order-data link" (click)="gotoOrderSummary(orderId)">{{orderId}}</td>
+          </tr>
+          }
+          <ng-container>
+            <tr>
+              <td class="data-label">Ticket event</td>
+              <td class="order-data ticket-data">
+
+                <div id="accordion" class="custom-accordion">
+                  @for (ticketEvent of this['ticketEvents']; track ticketEvent; let i = $index) {
+                  <div class="card">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i"
+                        aria-expanded="false" [attr.aria-controls]="'collapse' + i">
+                        Message details {{ this['ticketEvents'].length - i }}
+                        <i aria-hidden="true" class="fa fa-chevron-down">&nbsp;</i>
+                      </button>
+                    </h5>
+
+                    <div [attr.id]="'collapse' + i" class="collapse" data-bs-parent="#accordion">
+                      <div class="card-body">
+                        <b>Author:</b>
+                        @if (ticketEvent.addedByAgent) {
+                        <span>&nbsp;Added By Agent</span>
+                        }
+                        {{ ticketEvent.author }}<br>
+
+                        <b>Code:</b> {{ ticketEvent.code }}<br>
+                        <b>Created At:</b> {{ ticketEvent.createdAt }}<br>
+                        <b>Message:</b> {{ ticketEvent.message }}<br>
+                      </div>
+                    </div>
+                  </div>
+                  }
+                </div>
+
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+}

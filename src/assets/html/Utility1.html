@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+        .navbar-brand img {
+            height: 40px;
+        }
+        .hero-section {
+            background: url('https://img.lovepik.com/background/20211021/large/lovepik-green-natural-banner-background-image_500371077.jpg') center center/cover no-repeat;
+            height: 300px;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-box {
+            background: #f1f8e9; /* Light green background */
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+        .feature-box img {
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .feature-box h5 {
+            margin-bottom: 10px;
+            color: #4caf50; /* Green text color */
+        }
+        .feature-box p {
+            margin-bottom: 20px;
+            color: #666; /* Dark grey text color */
+        }
+        .full-width-section {
+            display: flex;
+            align-items: center;
+            background: #b3e5fc; /* Light grey background */
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        .full-width-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .full-width-section .text-section {
+            flex: 1;
+            padding: 20px;
+			background: #f4e0dc;
+			border-radius: 10px;
+        }
+        .full-width-section .image-section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Different color combinations for Solar Panels and Batteries */
+        .solar-section {
+            background: #fff9c4; /* Light yellow background */
+        }
+        .batteries-section {
+            background: #f8bbd0; /* Light pink background */
+        }
+    </style>
+</head>
+<body>
+
+   <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://cdn.freebiesupply.com/logos/large/2x/utility-services-logo-svg-vector.svg" alt="Site Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Smart Meters</a></li>
+                            <li><a class="dropdown-item" href="#">Solar Panels</a></li>
+                            <li><a class="dropdown-item" href="#">Batteries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to Utility Services</h1>
+            <p>Your one-stop solution for gas, electricity, and water connections</p>
+        </div>
+    </section>
+
+    <!-- Main Sections -->
+    <div class="container my-5">
+        <div class="row gy-4">
+            <!-- Apply for Services Section -->
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <img src="https://thumbs.dreamstime.com/b/d-isometric-flat-vector-conceptual-illustration-utility-services-household-utilities-257982603.jpg" alt="Apply for Services">
+                    <h5>Apply for Services</h5>
+                    <p>Get new connections for Gas, Electricity, and Water.</p>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+            <!-- Report an Issue Section -->
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHFHQSfcsb0RdiC_OAatsDx29Fw63wnTOQJQ&s" alt="Report an Issue">
+                    <h5>Report an Issue</h5>
+                    <p>Facing any issues? Report them here.</p>
+                    <a href="#" class="btn btn-primary mt-4">Report Now</a>
+                </div>
+            </div>
+            <!-- Check Status Section -->
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQht2_biPZpT5wA9RFOu7reQKN3XAiddbMJg&s" alt="Check Status">
+                    <h5>Check Status</h5>
+                    <p>Track the status of your applications and issues.</p>
+                    <a href="#" class="btn btn-primary">Check Now</a>
+                </div>
+            </div>
+        </div>
+		</br></br>
+
+        <!-- Full-width Sections -->
+        <div class="full-width-section">
+            <div class="text-section" style="background: #f4e0dc;">
+                <h5>Smart Meters</h5>
+				<p>Upgrade your home with state-of-the-art smart meters for precise and efficient energy monitoring. Our smart meters ensure accurate readings and empower you to manage your energy consumption effectively. Discover how smart technology can enhance your daily life and contribute to a sustainable future.</p>
+                <p>Purchase smart meters for accurate readings.</p>
+                <a href="#" class="btn btn-primary">Shop Now</a>
+            </div>
+            <div class="image-section">
+                <img src="https://cdn.vectorstock.com/i/preview-1x/09/23/household-meters-gas-water-electric-counter-vector-49570923.jpg" alt="Smart Meters">
+            </div>
+        </div>
+
+        <div class="full-width-section">
+            <div class="text-section" style="background: #f4e0dc;">
+                <h5>Solar Panels</h5>
+				<p>Embrace renewable energy with our high-performance solar panels. Designed for durability and efficiency, our solar panels harness the power of sunlight to reduce your carbon footprint and lower energy costs. Invest in a sustainable future and enjoy reliable energy independence with our cutting-edge solar solutions.</p>
+                <p>Invest in solar panels for renewable energy.</p>
+                <a href="#" class="btn btn-primary">Shop Now</a>
+            </div>
+            <div class="image-section">
+                <img src="https://sunapecopower.com/wp-content/uploads/2023/08/1.jpg" alt="Solar Panels">
+            </div>
+        </div>
+
+        <div class="full-width-section">
+            <div class="text-section" style="background: #f4e0dc;">
+                <h5>Batteries</h5>
+				<p>Explore our range of advanced batteries designed to store renewable energy efficiently. Whether for residential or commercial use, our batteries offer reliable backup power and help maximize your energy independence. With robust performance and long-lasting durability, our batteries are your solution for sustainable energy management and seamless power supply.</p>
+                <p>Get high-quality batteries for your energy needs.</p>
+                <a href="#" class="btn btn-primary">Shop Now</a>
+            </div>
+            <div class="image-section">
+                <img src="https://static.wixstatic.com/media/80a440_a695231dd9ce4010a419270c1db91ecb~mv2.jpg/v1/fill/w_960,h_720,al_c,q_85,enc_auto/80a440_a695231dd9ce4010a419270c1db91ecb~mv2.jpg" alt="Batteries">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Utility Services</h5>
+                    <p>Your one-stop solution for all utility services needs.</p>
+                </div>
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Contact Us</h5>
+                    <p>Email: support@utilityservices.com</p>
+                    <p>Phone: +123 456 7890</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Utility Services
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

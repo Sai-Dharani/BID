@@ -1,0 +1,23 @@
+.modal{
+    display: contents;
+}
+.text{
+    line-height: 1.5;
+}
+h3.heading {
+    color: #3072C5;
+}
+
+ /* Modal Content */
+ .modal-content {
+    position: relative;
+    background: white;
+    margin: auto;
+    padding: 0;
+    width: 40%;
+    margin-top: 10%;
+    box-shadow: 0 4px 8px 0 var(--modal-box-shadow),
+    0 6px 20px 0 var(--modal-box-shadow);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+  }

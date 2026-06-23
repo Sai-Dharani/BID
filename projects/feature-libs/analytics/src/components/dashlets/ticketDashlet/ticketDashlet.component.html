@@ -1,0 +1,101 @@
+@if (dateRange > 0 && (closeData || openData || newData)) {
+  <div class="total-header">
+    <h4 class="total-title">Total Tickets: <span class="total-count-value">{{(closeData || 0) + (openData || 0) + (newData || 0)}}</span></h4>
+  </div>
+}
+<div class="reports-top-details-container">
+  <div class="c_tab col-md-2 col-sm-2">
+      <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='Closed'"
+        data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+        class="module reports-top-details orderStuck" (click)="onTabSelection('Closed', closeData)"
+        [attr.disabled]="(closeData > 0 && dateRange > 0) ? null : true">
+        <img src="assets/icons/orderStuck.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+          class="reports-top-details-icon">
+          <div>
+            <div class="text-200 medium">Closed</div>
+            <div class="flex align-end">
+              @if (dateRange > 0) {
+                <div class="stuck display-4 mg-right-6px">
+                  {{closeData}}
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+  <div class="c_tab col-md-2 col-sm-2">
+        <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='New'"
+          data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+          class="module reports-top-details orderProgress" (click)="onTabSelection('New',openData)"
+          [attr.disabled]="(openData > 0 && dateRange > 0) ? null : true">
+          <img src="assets/icons/orderFailure.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+            class="reports-top-details-icon">
+            <div>
+              <div class="text-200 medium">Open</div>
+              <div class="flex align-end">
+                @if (dateRange > 0) {
+                  <div class="_progress display-4 mg-right-6px">
+                  {{openData}}</div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+  <div class=" c_tab col-md-2 col-sm-2">
+          <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='Open'"
+            data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+            class="module reports-top-details orderCompleted" (click)="onTabSelection('Open', newData);"
+            [attr.disabled]="(newData > 0 && dateRange > 0) ? null : true">
+            <img src="assets/icons/orderCompleted.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+              class="reports-top-details-icon">
+              <div>
+                <div class="text-200 medium">In Process</div>
+                <div class="flex align-end">
+                  @if (dateRange > 0) {
+                    <div class="completed display-4 mg-right-6px">
+                    {{newData}}</div>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+@if (selectedTab !='' && dateRange > 0) {
+        <div class="reports-top-details-container">
+          <div class="row col-md-12 col-sm-12 tabs">
+            @if (complaintData && complaintData != 0) {
+              <div class="col-md-2 col-sm-2">
+                @if (complaintData==1;) {
+                  <span>Complaint: </span>
+                }
+                @if (complaintData!=1;) {
+                  <span>Complaints: </span>
+                }
+                <b>{{complaintData}}</b>
+              </div>
+            }
+            @if (enquiryData && enquiryData != 0) {
+              <div class="col-md-2 col-sm-2">
+                @if (enquiryData==1;) {
+                  <span>Enquiry: </span>
+                }
+                @if (enquiryData!=1;) {
+                  <span>Enquiries: </span>
+                }
+                <b>{{enquiryData}}</b>
+              </div>
+            }
+            @if (problemData && problemData != 0) {
+              <div class="col-md-2 col-sm-2">
+                @if (problemData==1;) {
+                  <span>Problem: </span>
+                }
+                @if (problemData!=1;) {
+                  <span>Problems: </span>
+                }
+                <b>{{problemData}}</b>
+              </div>
+            }
+          </div>
+        </div>
+      }

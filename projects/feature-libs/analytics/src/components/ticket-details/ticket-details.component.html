@@ -1,0 +1,62 @@
+<div class="dashboard-main-content">
+  <div class="container p-3">
+    <div>
+      <a class="link" (click)="routeTo()"><i class='fas'>&#xf104;</i>
+    </a>
+    <span class="title pl-3 pb-2"><b>
+      Ticket Summary
+    </b>
+  </span>
+</div>
+@for (ticketD of ticketEvents; track ticketD) {
+  <div class="mb-3">
+    <hr>
+      <h5 class="mb-2 blue pad-left">
+        <b>
+          Ticket ID : {{ticketD.id}}
+        </b>
+      </h5>
+      <div class="card-body pt-0 pb-1 mb-2">
+        <div class="card-text">
+          <b>Subject:</b> {{ticketD.subject}}
+        </div>
+        <div class="card-text">
+          <b>Created At:</b> {{ticketD.createdAt|date:"medium"}}
+        </div>
+        <div class="card-text">
+          <b>Modified At:</b> {{ticketD.modifiedAt|date:"medium"}}
+        </div>
+        <div class="card-text">
+          <b>Status:</b> {{ticketD.status.name}}
+        </div>
+        <div class="card-text">
+          <b>Ticket Category:</b> {{ticketD.ticketCategory.name}}
+        </div>
+        <h5 class="pt-2 maroon"><b>
+          Message Events
+        </b></h5>
+        @for (ticketEvent of ticketD.ticketEvents; track ticketEvent; let i = $index) {
+          <h5 class="pt-2 blue"><b>
+            Message details : {{ticketD.ticketEvents.length-i}}
+          </b>
+        </h5>
+        <div class="card-text">
+          <b>Author:</b> | @if (ticketEvent.addedByAgent) {
+          <span>&nbsp;Added By Agent</span>
+          } {{ticketEvent.author}}
+        </div>
+        <div class="card-text">
+          <b>Code:</b> {{ticketEvent.code}}
+        </div>
+        <div class="card-text">
+          <b>Created At:</b> {{ticketEvent.createdAt|date:"medium"}}
+        </div>
+        <div class="card-text">
+          <b>Message:</b> {{ticketEvent.message}}
+        </div>
+      }
+    </div>
+  </div>
+}
+</div>
+</div>

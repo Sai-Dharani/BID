@@ -1,0 +1,53 @@
+@if (chartName=='orderSummary') {
+  <app-order-summary-chart class="home-chart-container"></app-order-summary-chart>
+}
+@if (chartName=='cronJob') {
+  <app-cron-job class="home-chart-container"></app-cron-job>
+}
+@if (chartName=='channel') {
+  <app-channel class="home-chart-container"></app-channel>
+}
+@if (chartName=='ticket') {
+  <app-ticket class="home-chart-container"></app-ticket>
+}
+@if (chartName=='user') {
+  <app-user-summary></app-user-summary>
+}
+@if (chartName=='userReg') {
+  <app-user-registration class="home-chart-container"></app-user-registration>
+}
+@if (chartName=='interface') {
+  <app-interface class="home-chart-container"></app-interface>
+}
+
+<!-- Charts For Details Page-->
+@if ((days | json) != '{}' && (chartName=='Week' || chartName=='Year' || chartName=='Date' || this.chartName == 'Month')) {
+  @if (currentDashlet =='order') {
+    <app-order-summary-chart chartPage="detail" [chartType]="chartType" [chartName]="chartName"></app-order-summary-chart>
+  } @else {
+    @if (currentDashlet =='ticket') {
+      <app-ticket chartPage="detail" [chartType]="chartType" [chartName]="chartName"></app-ticket>
+    } @else {
+      @if (currentDashlet =='channel') {
+        <app-channel chartPage="detail" [chartType]="chartType" [chartName]="chartName"></app-channel>
+      } @else {
+        @if (currentDashlet =='cronJob') {
+          <app-cron-job chartPage="detail" [chartType]="chartType" [chartName]="chartName"></app-cron-job>
+        } @else {
+          @if (currentDashlet =='user') {
+            <app-user-summary chartPage="detail" [chartType]="chartType" [chartName]="chartName"></app-user-summary>
+          } @else {
+            @if (currentDashlet =='userReg') {
+              <app-user-registration chartPage="detail" [chartType]="chartType" [chartName]="chartName"></app-user-registration>
+            } @else {
+              @if (currentDashlet =='interface') {
+                <app-interface chartPage="detail" [chartType]="chartType" [chartName]="chartName"></app-interface>
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

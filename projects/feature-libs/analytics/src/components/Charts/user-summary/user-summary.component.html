@@ -1,0 +1,12 @@
+@if (chartPage=='detail') {
+  <div class="chart-container">
+    <canvas id={{chartName}}>{{ chart }}</canvas>
+  </div>
+} @else {
+  <div class="home-chart-container">
+    <canvas id='user'>{{ chart }}</canvas>
+  </div>
+}
+<div class="user-chart-detail">
+  Activity Period = <b>60 days</b>
+</div>

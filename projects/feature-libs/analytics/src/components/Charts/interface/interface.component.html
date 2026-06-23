@@ -1,0 +1,28 @@
+<div class="container mt-5-">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>URL</th>
+        <th>Status</th>
+        @if (isDetailPage) {
+          <th class="refresh-col">Refresh</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (data of visibleData; track data) {
+        <tr>
+          <td>{{ data.url }}</td>
+          <td [class]="getStatusColor(data.status)">{{ data.status === 0 ? '...' : data.status }}</td>
+          @if (isDetailPage) {
+            <td class="refresh-cell">
+              <button class="refresh-btn" [disabled]="isRowRefreshing(data.url) && data.status === 0" (click)="fetchStatusForUrl(data.url)">
+                {{ (isRowRefreshing(data.url) && data.status === 0) ? 'Refreshing...' : 'Refresh' }}
+              </button>
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

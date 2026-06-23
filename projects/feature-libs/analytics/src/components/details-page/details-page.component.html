@@ -1,0 +1,176 @@
+<!-- <sideNav></sideNav> -->
+<app-side-nav></app-side-nav>
+
+<div class="dashboard-content">
+  <div class="container">
+    <div class="dashboard-main-content">
+      <div class="dashboard-banner">
+        <div class="banner">
+          <div class="row col-md-12 col-sm-12 col-lg-12 imageSection">
+            <div class="col-md-7 bannerImage">
+              <img class="detailsPageBanner" src="assets/icons/banner2.png" alt="Details Page Banner">
+            </div>
+            <div class="col-md-5 bannerImage">
+              <img class="detailsPageBanner" src="assets/icons/banner3.png" alt="Details Page Banner">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-default w-container">
+        <div data-w-id="56bd30ef-cb82-658f-d493-6d640ecf97f0" class="mg-bottom-40px">
+          <div class="grid-2-columns _2-col-mbl _1-col-mbp">
+            <div id="w-node-d824fe58-9d11-82a3-5bd0-f6415558c652-901e71ba">
+              <div *ngIf="currentDashlet=='order'">
+                <h1 class="heading-h4-size mg-bottom-8px">Order Summary</h1>
+              </div>
+              <div *ngIf="currentDashlet=='ticket'">
+                <h1 class="heading-h4-size mg-bottom-8px">Ticket Summary</h1>
+              </div>
+              <div *ngIf="currentDashlet=='channel'">
+                <h1 class="heading-h4-size mg-bottom-8px">Channel Summary</h1>
+              </div>
+              <div *ngIf="currentDashlet=='cronJob'">
+                <h1 class="heading-h4-size mg-bottom-8px">CronJob Summary</h1>
+              </div>
+              <div *ngIf="currentDashlet=='user'">
+                <h1 class="heading-h4-size mg-bottom-8px">User Activity Summary</h1>
+              </div>
+              <div *ngIf="currentDashlet=='interface'">
+                <h1 class="heading-h4-size mg-bottom-8px">Interface Status Summary</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail_page" *ngIf="currentDashlet!='interface'">
+          <app-basesite></app-basesite>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12" *ngIf="currentDashlet!='user' && currentDashlet!='interface'">
+            <ngbd-datepicker-adapter></ngbd-datepicker-adapter>
+          </div>
+        </div>
+
+        <div *ngIf="currentDashlet=='interface'" class="row" id="interfaceSection">
+          <div class="col-md-12 col-sm-12 col-lg-12">
+            <div class="module graph-large chart-section interface-table-wrapper">
+              <div class="grid-2-columns _2-col-mbl _1-col-mbp row">
+                <div class="text-300 bold color-neutral-800">Interface Status Summary</div>
+              </div>
+              <div class="divider top-20px---bottom-52px"></div>
+              <app-interface chartPage="detail"></app-interface>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="dateRange > 0 && currentDashlet!='interface'" class="row" id="chartSection">
+          <div class="col-md-12 col-sm-12 col-lg-12">
+            <div data-w-id="e5b429b5-439c-5fd1-b6c6-cc7ec4d25785" style="opacity: 1;"
+              class="module graph-large chart-section">
+              <div class="grid-2-columns _2-col-mbl _1-col-mbp row">
+                <div *ngIf="currentDashlet=='order'">
+                  <div class="text-300 bold color-neutral-800">Order Summary View</div>
+                </div>
+                <div *ngIf="currentDashlet=='ticket'">
+                  <div class="text-300 bold color-neutral-800">Ticket Summary View</div>
+                </div>
+                <div *ngIf="currentDashlet=='channel'">
+                  <div class="text-300 bold color-neutral-800">Channel Summary View</div>
+                </div>
+                <div *ngIf="currentDashlet=='cronJob'">
+                  <div class="text-300 bold color-neutral-800">CronJob Summary View</div>
+                </div>
+                <div *ngIf="currentDashlet=='user'">
+                  <div class="text-300 bold color-neutral-800">User Activity Summary</div>
+                </div>
+                <select *ngIf="currentDashlet !== 'user'" [(ngModel)]="selectedChartOption"
+                  (change)="selectedChart()" class="form-control chartType">
+                  <option [ngValue]="'bar'">Bar</option>
+                  <option [ngValue]="'line'">Line</option>
+                </select>
+              </div>
+              <div class="divider top-20px---bottom-52px"></div>
+              <app-chart [chartName]="chartOptions" [chartType]="currentDashlet=='user' ? 'pie' : selectedChartOption"></app-chart>
+              <!-- Predict button moved below graph -->
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="currentDashlet=='ticket' && dateRange > 0" class="row" style="margin-top: 24px;">
+          <div class="col-md-12 col-sm-12 col-lg-12">
+            <div class="ticket-prediction-section">
+              <button class="ai-predict-btn-purple prediction-toggle-btn" [disabled]="!canPredictTicket()"
+                (click)="predictTicket()">
+                <span>{{ predictLoading ? '⏳ Loading...' : '✨ Ticket Prediction' }}</span>
+              </button>
+
+              <ng-container *ngIf="showPredictionSection && (ticketPrediction || predictionError)">
+                <div class="prediction-section-inside">
+                  <div class="divider top-20px---bottom-52px"></div>
+                  <div class="prediction-container">
+                    <div *ngIf="predictionError" class="prediction-error-message">
+                      <div class="error-icon">❌</div>
+                      <div class="error-text">{{ predictionError }}</div>
+                    </div>
+
+                    <div *ngIf="!predictionError && hasNoData()" class="no-data-message">
+                      <div class="no-data-icon">⚠️</div>
+                      <div class="no-data-title">No Prediction Data Available</div>
+                      <div class="no-data-text">The prediction API returned empty data. Please try with different dates or check your data source.</div>
+                    </div>
+
+                    <div *ngIf="!predictionError && !hasNoData()" class="single-prediction-card premium-kv-card wide-prediction-card">
+                      <div class="card-border-gradient"></div>
+                      <div class="kv-sparkle">✨</div>
+                      <div class="kv-label prediction-flex-label">
+                        <div class="prediction-row">
+                          <span class="prediction-label">PREDICTION PERIOD:</span>
+                          <span class="prediction-value">{{ ticketPrediction?.ticketLabel || ticketPrediction?.label || (isPredictionArray() ? getPredictionRows()[0]?.ticketLabel : '') }}</span>
+                        </div>
+                        <div class="prediction-row">
+                          <span class="prediction-label">TICKET COUNT:</span>
+                          <span class="prediction-value">{{ formatTicketCount(getPrimaryTicketCount()) }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <!--For Orders-->
+        <div *ngIf="currentDashlet=='order'">
+          <app-orderDashlet></app-orderDashlet>
+        </div>
+
+        <!--For Ticket-->
+        <div *ngIf="currentDashlet=='ticket'">
+          <app-ticketDashlet></app-ticketDashlet>
+        </div>
+
+        <!--For Channel-->
+        <div *ngIf="currentDashlet=='channel'">
+          <app-channelDashlet></app-channelDashlet>
+        </div>
+
+        <!--For CronJob-->
+        <div *ngIf="currentDashlet=='cronJob'">
+          <app-cronJobDashlet></app-cronJobDashlet>
+        </div>
+
+        <!--For User Activity-->
+        <div *ngIf="currentDashlet=='user'">
+          <app-userDashlet></app-userDashlet>
+        </div>
+
+        <div *ngIf="OnModalConfirmation==true && dateRange>0 && currentDashlet!='interface'" data-w-id="e5b429b5-439c-5fd1-b6c6-cc7ec4d25785"
+          style="opacity: 1;" class="module graph-large m-0 p-0">
+          <app-data-table></app-data-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

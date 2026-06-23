@@ -1,0 +1,216 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'styles-config';
+
+// ORDER IMPORTANT: Spartacus core first
+@import '@spartacus/styles/scss/core';
+
+// ORDER IMPORTANT: Copy of Bootstrap files next
+@import '@spartacus/styles/vendor/bootstrap/scss/reboot';
+@import '@spartacus/styles/vendor/bootstrap/scss/type';
+@import '@spartacus/styles/vendor/bootstrap/scss/grid';
+@import '@spartacus/styles/vendor/bootstrap/scss/utilities';
+@import '@spartacus/styles/vendor/bootstrap/scss/transitions';
+@import '@spartacus/styles/vendor/bootstrap/scss/dropdown';
+@import '@spartacus/styles/vendor/bootstrap/scss/card';
+@import '@spartacus/styles/vendor/bootstrap/scss/nav';
+@import '@spartacus/styles/vendor/bootstrap/scss/buttons';
+@import '@spartacus/styles/vendor/bootstrap/scss/forms';
+@import '@spartacus/styles/vendor/bootstrap/scss/custom-forms';
+@import '@spartacus/styles/vendor/bootstrap/scss/modal';
+@import '@spartacus/styles/vendor/bootstrap/scss/close';
+@import '@spartacus/styles/vendor/bootstrap/scss/alert';
+@import '@spartacus/styles/vendor/bootstrap/scss/tooltip';
+
+// ORDER IMPORTANT: Spartacus styles last
+@import '@spartacus/styles/index';
+
+@import '../projects/storefrontstyles/index';
+@import '../projects/feature-libs/analytics/src/components/data-table/data-table.component.scss';
+@import '../projects/feature-libs/analytics/src/components/shared/datepicker/datepicker.component.scss';
+// @import "bootstrap/dist/css/bootstrap.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+// @import '~bootstrap/scss/functions';
+// @import '~bootstrap/scss/variables';
+@import '@spartacus/styles/vendor/bootstrap/scss/mixins';
+
+@font-face {
+    font-family: 'GT Standard Bold';
+    src: url('assets/fonts/GT-Standard-L-Extended-Bold.otf');
+}
+@font-face {
+    font-family: 'GT Standard Medium';
+    src: url('assets/fonts/GT-Standard-L-Extended-Medium.otf');
+}
+@font-face {
+    font-family: 'Inter Bold';
+    src: url('assets/fonts/Inter-Bold.otf');
+}
+@font-face {
+    font-family: 'Inter ExtraLight';
+    src: url('assets/fonts/Inter-ExtraLight.otf');
+}
+@font-face {
+    font-family: 'Inter Light';
+    src: url('assets/fonts/Inter-Light.otf');
+}
+@font-face {
+    font-family: 'Inter Medium';
+    src: url('assets/fonts/Inter-Medium.otf');
+}
+@font-face {
+    font-family: 'Inter Regular';
+    src: url('assets/fonts/Inter-Regular.otf');
+}
+@font-face {
+    font-family: 'Inter SemiBold';
+    src: url('assets/fonts/Inter-SemiBold.otf');
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'GT Standard Bold', 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+}
+p, span, a, li, div, input, button, label, table, pre {
+    font-family: 'Inter Regular', 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+}
+body{
+    line-height: 0 !important;
+}
+
+// Charts styling
+#cai-webchat-div {
+    display: none;
+}
+.chatbot-active #cai-webchat-div {
+    display: block;
+}
+.RecastAppExpander, .RecastAppHeader{
+    color: rgb(255, 255, 255);
+    background-color: #5f249f !important;
+}
+
+.voice-input-wrapper {
+    position: relative;
+    display: block;
+}
+
+#cai-webchat-div .voice-input-field {
+    box-sizing: border-box;
+    min-height: 40px;
+    line-height: 1.5;
+    padding: 0.5rem !important;
+    padding-left: 2.25rem !important;
+    padding-right: 2.25rem !important;
+    font-size: 14px;
+    border-radius: 4px;
+    appearance: textfield;
+    text-indent: 0 !important;
+    caret-color: #1f2a44;
+}
+
+#cai-webchat-div input.voice-input-field {
+    height: 40px;
+    line-height: 38px;
+    padding-top: 1px !important;
+    padding-bottom: 0 !important;
+}
+
+#cai-webchat-div .voice-input-field::placeholder {
+    color: #8b8f99;
+    line-height: 2.3;
+    opacity: 1;
+}
+
+#cai-webchat-div input.voice-input-field::placeholder {
+    line-height: 38px;
+}
+
+#cai-webchat-div .voice-input-field:focus {
+    outline: none;
+    border-color: #6d5dd3 !important;
+    box-shadow: 0 0 0 2px rgba(109, 93, 211, 0.2);
+}
+
+#cai-webchat-div .voice-input-field::-webkit-outer-spin-button,
+#cai-webchat-div .voice-input-field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.voice-mic-inline-btn {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(95, 36, 159, 0.35);
+    background: linear-gradient(145deg, #ffffff 0%, #f2ebff 100%);
+    color: #5f249f;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    padding: 0;
+    line-height: 1;
+    box-shadow: 0 1px 4px rgba(20, 20, 43, 0.14);
+}
+
+.voice-mic-inline-btn i {
+    font-size: 12px;
+}
+
+.voice-mic-inline-btn.listening {
+    background: linear-gradient(145deg, #ffab85 0%, #ff6b35 100%);
+    border-color: #ff6b35;
+    color: #2b0a00;
+}
+
+#cai-webchat-div .voice-input-wrapper button[aria-label*="send" i],
+#cai-webchat-div .voice-input-wrapper [class*="send" i] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.owl-theme .owl-nav [class*=owl-] {
+    color: #FFF;
+    background: #000 !important;
+}
+.owl-theme .owl-nav [class*=owl-]:hover {
+    background: #000;
+    color: #FFF;
+    text-decoration: none;
+}
+.chart-container {
+    height: auto;
+    width: 100%;
+    display: block;
+}
+.home-chart-container{
+    width: auto;
+    height: 200px;
+    display: block;
+}
+.user-chart-detail{
+    font-size: 12px;
+    text-align: center;
+    color: #707170;
+}
+/*--------------------Mobile View------------------------------*/
+@media (max-width: 640px)  {
+    .chart-container {
+        height: 50vh;
+        width: 100vh;
+    }
+}
+/*--------------------Tablet View------------------------------*/
+@media (min-width: 768px) and (max-width: 991.98px){
+    .home-chart-container{
+        height: 25vh;
+    }
+    .chart-container{
+        height: 30vh;
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

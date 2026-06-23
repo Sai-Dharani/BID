@@ -1,0 +1,78 @@
+@if (dateRange > 0 && (webData || webMobileData || callCenterData)) {
+  <div class="total-header">
+    <h4 class="total-title">Total Channels: <span class="total-count-value">{{(webData || 0) + (webMobileData || 0) + (callCenterData || 0)}}</span></h4>
+  </div>
+}
+<div class="reports-top-details-container">
+  <div class="c_tab col-md-2 col-sm-2">
+    <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='Web'"
+      data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+      class="module reports-top-details orderCompleted" (click)="onTabSelection('Web', webData)"
+      [attr.disabled]="(webData > 0 && dateRange > 0) ? null : true">
+      <img src="assets/icons/orderStuck.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+        class="reports-top-details-icon">
+      <div>
+        <div class="text-200 medium">Web</div>
+        <div class="flex align-end">
+          @if (dateRange > 0) {
+            <div class="stuck display-4 mg-right-6px">
+              {{webData}}
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="c_tab col-md-2 col-sm-2">
+    <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='WebMobile'"
+      data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+      class="module reports-top-details orderFailure" (click)="onTabSelection('WebMobile',webMobileData)"
+      [attr.disabled]="(webMobileData > 0 && dateRange > 0) ? null : true">
+      <img src="assets/icons/orderFailure.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+        class="reports-top-details-icon">
+      <div>
+        <div class="text-200 medium">Web Mobile</div>
+        <div class="flex align-end">
+          @if (dateRange > 0) {
+            <div class="_progress display-4 mg-right-6px">
+            {{webMobileData}}</div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" c_tab col-md-2 col-sm-2">
+    <div id="w-node-_15bcd904-cca9-3107-d162-2cf33da79d40-901e71ba" [class.active]="selectedTab=='CallCenter'"
+      data-w-id="15bcd904-cca9-3107-d162-2cf33da79d40" style="opacity: 1;"
+      class="module reports-top-details orderCancelled" (click)="onTabSelection('CallCenter', callCenterData);"
+      [attr.disabled]="(callCenterData > 0 && dateRange > 0) ? null : true">
+      <img src="assets/icons/orderCompleted.png" loading="eager" alt="Pageviews - Dashly X Webflow Template"
+        class="reports-top-details-icon">
+      <div>
+        <div class="text-200 medium">Call Center</div>
+        <div class="flex align-end">
+          @if (dateRange > 0) {
+            <div class="completed display-4 mg-right-6px">
+            {{callCenterData}}</div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@if (selectedTab !='' && dateRange > 0) {
+        <div class="reports-top-details-container">
+          <div class="row col-md-12 col-sm-12 tabs">
+            @if (orderSubStatus | async; as statuses) {
+              @if (statuses && statuses.length > 0) {
+                @for (status of statuses; track status) {
+                  <div class="subStatus pl-3">
+                    <span>{{status?.key}}: </span>
+                    <b>{{status?.value}}</b>
+                  </div>
+                }
+              }
+            }
+          </div>
+        </div>
+      }

@@ -1,0 +1,90 @@
+<div class="dashboard-main-content">
+  <div class="container p-3">
+    <div>
+      <a class="link" (click)="routeTo()"><i class='fas'>&#xf104;</i>
+    </a>
+    <span class="title pl-3 pb-2"><b>
+      Order Summary
+    </b>
+  </span>
+</div>
+<hr>
+  <h5 class="mb-2  pad-left">
+    <b>
+      Order ID : <span class="blue">
+      {{orderData?.code}}
+    </span>
+  </b>
+</h5>
+<div class="card-body pt-0 pb-1 mb-2">
+  <div class="card-text">
+    <b>Created At :</b> {{orderData?.created|date:"medium"}}
+  </div>
+  <div class="card-text">
+    <b>Status :</b> {{orderData?.statusDisplay}}
+  </div>
+  <div class="card-text">
+    <b>Name (billing):</b> {{orderData?.paymentInfo?.billingAddress?.titleCode}}
+    {{orderData?.paymentInfo?.billingAddress?.firstName}} {{orderData?.paymentInfo?.billingAddress?.lastName}}
+  </div>
+  <div class="card-text">
+    <b>Email  :</b> {{orderData?.paymentInfo?.billingAddress?.email}}
+  </div>
+  <div class="card-text">
+    <b>Delivery mode :</b> {{orderData?.deliveryMode?.name}} {{orderData?.deliveryMode?.description}}
+  </div>
+  <div class="card-text">
+    <b>Delivery Address :</b>
+    <div class="pl-5">
+      <div>
+        Address line1 : {{orderData?.paymentInfo?.billingAddress?.line1}}
+      </div>
+      <div>
+        Address line2 : {{orderData?.paymentInfo?.billingAddress?.line2}}
+      </div>
+      <div>
+        Phone : {{orderData?.paymentInfo?.billingAddress?.phone}}
+      </div>
+      <div>
+        Postal code : {{orderData?.paymentInfo?.billingAddress?.postalCode}}
+      </div>
+    </div>
+  </div>
+  <div class="card-text">
+    <b>Payment details :</b>
+    <div class="pl-5">
+      <div>
+        Card type: {{orderData?.paymentInfo?.cardType?.name}}
+      </div>
+      <div>
+        Card number: {{orderData?.paymentInfo?.cardNumber}}
+      </div>
+      <div>
+        Card period: {{orderData?.paymentInfo?.expiryMonth}}/{{orderData?.paymentInfo?.expiryYear}}
+      </div>
+    </div>
+  </div>
+  <div class="card-text">
+    <b>TotalItems :</b> {{orderData?.totalItems}}
+  </div>
+  <div class="card-text">
+    <b>Product :</b>
+    <div class="card-text">
+      @for (entry of orderData?.entries; track entry) {
+        <div class="pl-5">{{entry?.product?.name}}</div>
+      }
+    </div>
+  </div>
+  <div class="card-text">
+    <b>Total Price :</b> {{orderData?.totalPrice?.formattedValue}}
+  </div>
+  <div class="card-text">
+    <b>Total Tax :</b> {{orderData?.totalTax?.formattedValue}}
+  </div>
+  <div class="card-text">
+    <b>Total Price With Tax :</b> {{orderData?.totalPriceWithTax?.formattedValue}}
+  </div>
+
+</div>
+</div>
+</div>

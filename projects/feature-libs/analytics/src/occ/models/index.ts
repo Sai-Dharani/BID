@@ -1,0 +1,1 @@
+export * from "./occ-analytics-endpoints.model"
